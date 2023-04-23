@@ -1,0 +1,4 @@
+(executable
+ (public_name fizz_buzz)
+ (name main)
+ (libraries fizz_buzz))
