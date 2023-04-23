@@ -26,7 +26,7 @@ Dune Compile (dc)
 alias dc='dune build'
 ```
 
-Dune Compile (dc)
+Dune Run (dr)
 
 ```
 alias dr='dune exec ./bin/main.exe'
