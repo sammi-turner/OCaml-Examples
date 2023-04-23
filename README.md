@@ -8,7 +8,7 @@ Dune New Project (dnp)
 
 ```
 dnp() {
-	dune init project $1 && cd $1
+  dune init project $1 && cd $1
 }
 ```
 
