@@ -1,0 +1,4 @@
+(executable
+ (public_name opposite_number)
+ (name main)
+ (libraries opposite_number))
