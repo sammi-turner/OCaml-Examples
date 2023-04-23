@@ -1,0 +1,4 @@
+(executable
+ (public_name file_write_demo)
+ (name main)
+ (libraries file_write_demo))
