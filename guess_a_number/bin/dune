@@ -1,0 +1,4 @@
+(executable
+ (public_name guess_a_number)
+ (name main)
+ (libraries guess_a_number))
