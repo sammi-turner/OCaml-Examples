@@ -1,7 +1,5 @@
 # OCaml Examples
 
-Small example programs in OCaml.
-
 ## Useful shell function
 
 Dune New Project (dnp)
