@@ -1,0 +1,4 @@
+(executable
+ (public_name powers_of_two)
+ (name main)
+ (libraries powers_of_two))
