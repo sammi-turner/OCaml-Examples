@@ -1,0 +1,4 @@
+(executable
+ (public_name reduce_but_grow)
+ (name main)
+ (libraries reduce_but_grow))
