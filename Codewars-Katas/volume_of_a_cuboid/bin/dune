@@ -1,0 +1,4 @@
+(executable
+ (public_name volume_of_a_cuboid)
+ (name main)
+ (libraries volume_of_a_cuboid))
