@@ -1,10 +1,15 @@
-(* Complete the function that takes a non-negative integer n as input, and returns a list of all the powers of 2 with the exponent ranging from 0 to n ( inclusive ). *)
+(* 
 
-(* Examples *)
+Complete the function that takes a non-negative integer n as input, and returns a list of all the powers of 2 with the exponent ranging from
+0 to n inclusive.
 
-(* n = 0  ==> [1] *)
-(* n = 1  ==> [1, 2] *)
-(* n = 2  ==> [1, 2, 4] *)
+Examples:
+
+n = 0  ==> [1]
+n = 1  ==> [1, 2]
+n = 2  ==> [1, 2, 4] 
+
+*)
 
 let powersOfTwo n = List.init (n + 1) ((lsl) 1)
 
