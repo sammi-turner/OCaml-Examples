@@ -1,10 +1,14 @@
-(* Given a non-empty list of integers, return the result of multiplying the values together in order. *)
+(* 
 
-(* Examples *)
+Given a non-empty list of integers, return the result of multiplying the values together.
 
-(* [1; 2; 3; 4] => 1 * 2 * 3 * 4 = 24 *)
-(* [2; 3; 5] => 2 * 3 * 5 = 30 *)
-(* [7; 7] => 7 * 7 = 49 *)
+Examples:
+
+[1; 2; 3; 4] => 1 * 2 * 3 * 4 = 24
+[2; 3; 5] => 2 * 3 * 5 = 30
+[7; 7] => 7 * 7 = 49 
+
+*)
 
 let grow = List.fold_left ( * ) 1
 
