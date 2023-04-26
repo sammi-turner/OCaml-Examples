@@ -1,0 +1,4 @@
+(executable
+ (public_name check_for_factor)
+ (name main)
+ (libraries check_for_factor))
