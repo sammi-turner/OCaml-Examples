@@ -1,0 +1,4 @@
+(executable
+ (public_name wilson_primes)
+ (name main)
+ (libraries wilson_primes))

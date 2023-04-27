@@ -1,0 +1,2 @@
+(library
+ (name wilson_primes))
