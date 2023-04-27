@@ -16,6 +16,7 @@ let powersOfTwo n = List.init (n + 1) ((lsl) 1)
 let a = powersOfTwo 0
 let b = powersOfTwo 1
 let c = powersOfTwo 2
+
 let () = List.iter (Printf.printf "%d ") a
 let () = print_endline("")
 let () = List.iter (Printf.printf "%d ") b
