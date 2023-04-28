@@ -16,9 +16,16 @@ Examples:
 
 *)
 
-let rec find_multiples (integer:int) (limit:int): int list =
+let find_multiples (integer:int) (limit:int): int list =
   List.init (limit/ integer) (fun x -> (x + 1) * integer)
 
 let test0 = find_multiples 2 6
 let test1 = find_multiples 3 5
 let test2 = find_multiples 4 20
+
+let () = List.iter (Printf.printf "%d ") test0
+let () = print_endline ""
+let () = List.iter (Printf.printf "%d ") test1
+let () = print_endline ""
+let () = List.iter (Printf.printf "%d ") test2
+let () = print_endline ""
