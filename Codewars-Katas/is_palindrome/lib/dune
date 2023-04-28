@@ -1,0 +1,2 @@
+(library
+ (name is_palindrome))
