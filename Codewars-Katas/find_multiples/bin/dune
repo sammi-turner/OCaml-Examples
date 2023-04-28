@@ -1,0 +1,4 @@
+(executable
+ (public_name find_multiples)
+ (name main)
+ (libraries find_multiples))
