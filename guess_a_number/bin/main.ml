@@ -1,12 +1,12 @@
-let rec guess_number actual_number =
+let rec guess_number num =
   print_string "Guess a number: ";
   let guess = read_int () in
-  if guess < actual_number then (
+  if guess < num then (
     print_string "Too low! Try again.\n";
-    guess_number actual_number
-  ) else if guess > actual_number then (
+    guess_number num
+  ) else if guess > num then (
     print_string "Too high! Try again.\n";
-    guess_number actual_number
+    guess_number num
   ) else (
     print_string "You got it!\n"
   )
