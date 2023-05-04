@@ -1,0 +1,4 @@
+(executable
+ (public_name build_a_square)
+ (name main)
+ (libraries build_a_square))
