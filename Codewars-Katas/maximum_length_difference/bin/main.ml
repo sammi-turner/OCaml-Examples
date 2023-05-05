@@ -8,10 +8,10 @@ If either array is empty, return None.
 
 Example:
 
-let a1 = [|"hoqq";"bbllkw";"oox";"ejjuyyy";"plmiis";"xxxzgpsssa";"xxwwkktt";"znnnnfqknaz";"qqquuhii";"dvvvwz"|]
-let a2 = [|"cccooommaaqqoxii";"gggqaffhhh";"tttoowwwmmww"|]
+a1 = [|"hoqq";"bbllkw";"oox";"ejjuyyy";"plmiis";"xxxzgpsssa";"xxwwkktt";"znnnnfqknaz";"qqquuhii";"dvvvwz"|]
+a2 = [|"cccooommaaqqoxii";"gggqaffhhh";"tttoowwwmmww"|]
 
-mxdiflg a1, a2 => 13
+The maximum difference between a1 and a2 is 13.
 
 *)
 
