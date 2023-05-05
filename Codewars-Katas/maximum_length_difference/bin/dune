@@ -1,0 +1,4 @@
+(executable
+ (public_name maximum_length_difference)
+ (name main)
+ (libraries maximum_length_difference))
