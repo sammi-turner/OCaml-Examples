@@ -1,11 +1,11 @@
-let read_file filename =
-  let ic = open_in filename in
-  let n = in_channel_length ic in
-  let s = Bytes.create n in
-  really_input ic s 0 n;
-  close_in ic;
-  Bytes.to_string s
+let read_file name =
+  try
+    let channel = open_in name in
+    let contents = really_input_string channel (in_channel_length channel) in
+    close_in channel;
+    contents
+  with
+    | Sys_error _ -> ""
 
-let file = "example.txt"
-let content = read_file file
+let content = read_file "dog.txt"
 let () = print_endline content
