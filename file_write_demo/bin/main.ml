@@ -1,7 +1,6 @@
-let file = "example.txt"
-let message = "Mary had a little lamb."
+let write_file name content =
+  let oc = open_out name in
+  output_string oc content;
+  close_out oc
 
-let () =
-  let oc = open_out file in
-  Printf.fprintf oc "%s\n" message;
-  close_out oc;
+let () = write_file "example.txt" "Hello, world!"
