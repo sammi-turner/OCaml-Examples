@@ -1,0 +1,4 @@
+(executable
+ (public_name two_to_one)
+ (name main)
+ (libraries two_to_one))
