@@ -17,6 +17,4 @@ let test0 = opposite 1
 let test1 = opposite 14
 let test2 = opposite (-34)
 
-let () = Printf.printf "%d\n" test0
-let () = Printf.printf "%d\n" test1
-let () = Printf.printf "%d\n" test2
+let () = Printf.printf "%d\n%d\n%d\n" test0 test1 test2
