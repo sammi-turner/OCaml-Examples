@@ -11,6 +11,4 @@ let r0 = get_volume_of_cuboid 3 5 7
 let r1 = get_volume_of_cuboid 2 4 1
 let r2 = get_volume_of_cuboid 3 4 6
 
-let () = Printf.printf "%d\n" r0
-let () = Printf.printf "%d\n" r1
-let () = Printf.printf "%d\n" r2
+let () = Printf.printf "%d\n%d\n%d\n" test0 test1 test2
