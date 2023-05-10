@@ -1,0 +1,4 @@
+(executable
+ (public_name heros_root)
+ (name main)
+ (libraries heros_root))
