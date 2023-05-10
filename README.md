@@ -1,5 +1,9 @@
 # OCaml Examples
 
+## Installation
+
+To install OCaml, follow [these instructions](https://ocaml.org/docs/up-and-running).
+
 ## Useful shell function
 
 Dune New Project (dnp)
