@@ -2,7 +2,7 @@
 
 Write a function that takes a list of numbers and returns the sum of all the positive elements.
 
-Examples :
+Examples:
 
 [] => 0
 [0;-3] => 0
@@ -19,6 +19,4 @@ let test0 = positive_sum []
 let test1 = positive_sum [0;-3]
 let test2 = positive_sum [1;-4;7;12]
 
-let () = Printf.printf "%d\n" test0
-let () = Printf.printf "%d\n" test1
-let () = Printf.printf "%d\n" test2
+let () = Printf.printf "%d\n%d\n%d\n" test0 test1 test2
