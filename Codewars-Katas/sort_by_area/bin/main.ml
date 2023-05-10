@@ -12,7 +12,7 @@ The rectangles will have width and length dimensions.
 
 The circles will have a radius dimension.
 
-For example,
+For example:
 
 shapes = [ Rectangle (4.23, 6.43); Circle 1.23; Circle 3.444; Rectangle (1.342, 3.212) ]
 sort_by_area shapes -> [ Rectangle (1.342, 3.212); Circle 1.23; Rectangle (4.23, 6.43); Circle 3.444 ]
