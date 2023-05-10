@@ -35,6 +35,4 @@ let test0 = expression_matter 2 3 5
 let test1 = expression_matter 1 2 4
 let test2 = expression_matter 3 6 8
 
-let () = Printf.printf "%d\n" test0
-let () = Printf.printf "%d\n" test1
-let () = Printf.printf "%d\n" test2
+let () = Printf.printf "%d\n%d\n%d\n" test0 test1 test2
