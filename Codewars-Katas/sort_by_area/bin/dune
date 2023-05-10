@@ -1,0 +1,4 @@
+(executable
+ (public_name sort_by_area)
+ (name main)
+ (libraries sort_by_area))
