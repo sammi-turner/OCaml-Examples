@@ -4,6 +4,10 @@
 
 To install OCaml, follow [these instructions](https://ocaml.org/docs/up-and-running).
 
+## YouTube Tutorials
+
+I highly recommend Michael Ryan Clarkson's extensive [OCaml Programming](https://youtube.com/playlist?list=PLre5AT9JnKShBOPeuiD9b-I4XROIJhkIU) playlist.
+
 ## Useful shell function
 
 Dune New Project (dnp)
