@@ -22,8 +22,4 @@ let test0 = generate_shape 5
 let test1 = generate_shape 3
 let test2 = generate_shape 1
 
-let () = print_endline test0
-let () = print_endline ""
-let () = print_endline test1
-let () = print_endline ""
-let () = print_endline test2
+let () = Printf.printf "%s\n%s\n%s\n" test0 test1 test2
