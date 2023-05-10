@@ -8,7 +8,7 @@ type shape =
 
 write a "sort_by_area" function that takes a list of shapes as its argument and returns a list of shapes that are sorted by ascending area.
 
-The rectangles will have with width and length dimensions.
+The rectangles will have width and length dimensions.
 
 The circles will have a radius dimension.
 
