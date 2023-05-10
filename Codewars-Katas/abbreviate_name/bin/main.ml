@@ -24,6 +24,4 @@ let test0 = abbrev_name "Joe Bloggs"
 let test1 = abbrev_name "Jane Smith"
 let test2 = abbrev_name "Tim Cook"
 
-let () = Printf.printf "%s\n" test0
-let () = Printf.printf "%s\n" test1
-let () = Printf.printf "%s\n" test2
+let () = Printf.printf "%s\n%s\n%s\n" test0 test1 test2
