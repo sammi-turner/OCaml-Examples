@@ -20,6 +20,4 @@ let test0 = check_for_factor 10 2
 let test1 = check_for_factor 63 7
 let test2 = check_for_factor 9 2
 
-let () = Printf.printf "%b\n" test0
-let () = Printf.printf "%b\n" test1
-let () = Printf.printf "%b\n" test2
+let () = Printf.printf "%b\n%b\n%b\n" test0 test1 test2
