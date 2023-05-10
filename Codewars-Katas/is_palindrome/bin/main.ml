@@ -27,6 +27,4 @@ let test0 = is_palindrome "Abba"
 let test1 = is_palindrome "Hello"
 let test2 = is_palindrome "wow"
 
-let () = Printf.printf "%b\n" test0
-let () = Printf.printf "%b\n" test1
-let () = Printf.printf "%b\n" test2
+let () = Printf.printf "%b\n%b\n%b\n" test0 test1 test2
