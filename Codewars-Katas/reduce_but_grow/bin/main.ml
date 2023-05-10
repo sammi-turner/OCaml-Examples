@@ -1,13 +1,13 @@
 (* 
 
-Given a non-empty list of integers, return the result of multiplying the values together.
+Given a non-empty list of integers, return the result of multiplying the values together in order.
 
 Examples:
 
 [1; 2; 3; 4] => 1 * 2 * 3 * 4 = 24
 [2; 3; 5] => 2 * 3 * 5 = 30
 [7; 7] => 7 * 7 = 49 
-
+   
 *)
 
 let grow = List.fold_left ( * ) 1
@@ -20,6 +20,4 @@ let r0 = grow l0
 let r1 = grow l1
 let r2 = grow l2
 
-let () = Printf.printf("%d\n") r0
-let () = Printf.printf("%d\n") r1
-let () = Printf.printf("%d\n") r2
+let () = Printf.printf("%d\n%d\n%d\n") r0 r1 r2
