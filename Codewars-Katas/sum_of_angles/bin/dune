@@ -1,0 +1,4 @@
+(executable
+ (public_name sum_of_angles)
+ (name main)
+ (libraries sum_of_angles))
