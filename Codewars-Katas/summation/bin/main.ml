@@ -20,6 +20,4 @@ let test0 = summation 2
 let test1 = summation 3
 let test2 = summation 8
 
-let () = Printf.printf "%d\n" test0
-let () = Printf.printf "%d\n" test1
-let () = Printf.printf "%d\n" test2
+let () = Printf.printf "%d\n%d\n%d\n" test0 test1 test2
