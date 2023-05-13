@@ -37,7 +37,7 @@ let is_unix () =
 
 SHELL
 
-The shell function flushes stdout and executes its string parameter as a shell command.
+The shell function flushes stdout and executes its string argument as a shell command.
 
 Unix example:
 
@@ -124,7 +124,7 @@ let append_to_file name content =
 
 PSEUDO
 
-The pseudo function takes a non-negative integer parameter n, and returns an integer between 0 and n.
+The pseudo function takes a non-negative integer argument n, and returns an integer between 0 and n.
 
 Example:
 
@@ -167,7 +167,7 @@ let print_list lst =
    
 REMOVE EMPTY STRINGS
 
-The remove_empty_strings function takes a list of strings as its parameter and returns the list with all the empty strings removed. 
+The remove_empty_strings function takes a list of strings as its argument and returns the list with all the empty strings removed. 
 
 open Utils
 
@@ -187,7 +187,7 @@ let rec remove_empty_strings lst =
    
 NTH CHAR
 
-The nth_char function takes a string (s) and a non-negative int (n) as parameters. 
+The nth_char function takes a string (s) and a non-negative int (n) as arguments. 
 
 It returns either the empty string, or a string containing the nth char of s.
 
@@ -208,7 +208,7 @@ let nth_char (s: string) (n: int) : string =
    
 IS DIGITS
 
-The is_digits function takes a string parameter and returns the boolean true if it consists only of decimal digits, or false if it does not.
+The is_digits function takes a string argument and returns the boolean true if it consists only of decimal digits, or false if it does not.
 
 Example:
 
@@ -225,3 +225,51 @@ let () = Printf.printf "%b %b %b\n" test0 test1 test2
 let is_digits s =
   let is_digit c = Char.code c >= 48 && Char.code c <= 57 in
   String.for_all is_digit s
+
+(*
+
+TO INT
+
+The to_int function takes a string argument returns an int option.
+
+Example:
+
+open Utils
+
+let print_int_option (x : int option) : unit =
+  match x with
+  | Some x -> Printf.printf "%d\n" x
+  | None -> Printf.printf "error\n"
+
+let () = print_int_option(to_int "420.69")
+let () = print_int_option(to_int "69")
+
+*)
+
+let to_int (s : string) : int option =
+  try Some (int_of_string s)
+  with Failure _ -> None
+
+(*
+
+TO FLOAT
+
+The to_float function takes a string argument returns a float option.
+
+Example:
+
+open Utils
+
+let print_float_option (x : float option) : unit =
+  match x with
+  | Some x -> Printf.printf "%f\n" x
+  | None -> Printf.printf "error\n"
+
+let () = print_float_option(to_float "420.69")
+let () = print_float_option(to_float "69")
+
+*)
+
+let to_float (s : string) : float option =
+  try Some (float_of_string s)
+  with Failure _ -> None
