@@ -124,7 +124,7 @@ let append_to_file name content =
 
 PSEUDO
 
-The pseudo function takes a non-negative integer argument n, and returns an integer between 0 and n.
+The pseudo function takes a non-negative integer argument n, and returns an integer between 0 and n - 1.
 
 Example:
 
@@ -171,7 +171,7 @@ Example:
 
 open Utils
 
-let sentence = "Mary had a little lamb"
+let sentence = "Mary   had   a   little   lamb"
 let words = sentence_to_words sentence
 let test = words_to_sentence words
 let () = Printf.printf "Sentence: %s.\n" test
