@@ -1,5 +1,6 @@
 open Utils
 
-let test = ["Mary";"had";"a";"little";"lamb."]
-let sentence = words_to_sentence test
-let () = print_endline sentence
+let sentence = "Mary had a little lamb"
+let words = sentence_to_words sentence
+let test = words_to_sentence words
+let () = Printf.printf "Sentence: %s.\n" test

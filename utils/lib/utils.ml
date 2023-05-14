@@ -163,6 +163,35 @@ let words_to_sentence lst = String.concat " " lst
 
 (*
    
+SENTENCE TO WORDS
+
+The sentence_to_words function converts a strings into a list of words with whitespace as delimiter.
+
+Example:
+
+open Utils
+
+let sentence = "Mary had a little lamb"
+let words = sentence_to_words sentence
+let test = words_to_sentence words
+let () = Printf.printf "Sentence: %s.\n" test
+
+*)
+
+let sentence_to_words s =
+  let open String in
+  let rec aux acc i =
+    if i >= length s then List.rev acc
+    else
+      let j = try index_from s i ' ' with Not_found -> length s in
+      let word = sub s i (j - i) in
+      let acc' = if word = "" then acc else word :: acc in
+      aux acc' (j + 1)
+  in
+  aux [] 0
+
+(*
+   
 REMOVE EMPTY STRINGS
 
 The remove_empty_strings function takes a list of strings as its argument and returns the list with all the empty strings removed. 
