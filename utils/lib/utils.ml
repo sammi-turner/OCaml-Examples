@@ -2,7 +2,7 @@
 
 USER INPUT
 
-The user_input function prompts the user with a string and returns the user input as a string.
+The user_input function prompts the user with a string and returns the user input as another string.
 
 Example:
 
@@ -23,7 +23,7 @@ let user_input s =
    
 IS UNIX
 
-The is_unix function returns true the command is being run on a unix-like operating system, or false if it is not.
+The is_unix function returns true if the command is being run on a unix-like operating system, or false otherwise.
 
 *)
 
@@ -37,7 +37,7 @@ let is_unix () =
 
 SHELL
 
-The shell function flushes stdout and executes its string argument as a shell command.
+The shell function flushes stdout and then executes its string argument as a shell command.
 
 Unix example:
 
@@ -103,7 +103,7 @@ let write_file name content =
    
 APPEND TO FILE
 
-The append_to_file function takes two string arguments. One for a file name and one for a string that is appended to the named file.
+The append_to_file function takes two string arguments. One for a file name and one for the string that is appended to the named file.
 
 Example:
 
@@ -143,7 +143,6 @@ let pseudo n =
   match n with
     _ when n > 0 -> Random.int(n)
     | _ -> 0
-
 
 (*
    
@@ -230,7 +229,7 @@ let is_digits s =
 
 TO INT
 
-The to_int function takes a string argument returns an int option.
+The to_int function takes a string argument and returns an int option.
 
 Example:
 
@@ -254,7 +253,7 @@ let to_int (s : string) : int option =
 
 TO FLOAT
 
-The to_float function takes a string argument returns a float option.
+The to_float function takes a string argument and returns a float option.
 
 Example:
 
@@ -273,3 +272,18 @@ let () = print_float_option(to_float "69")
 let to_float (s : string) : float option =
   try Some (float_of_string s)
   with Failure _ -> None
+
+(*
+   
+WORD COUNT
+
+The word_count function takes a string argument and returns the number of words in the string, as delmited by whitespace.
+*)
+
+let word_count s =
+  let rec count_words acc = function
+    | [] -> acc
+    | "" :: tail -> count_words acc tail
+    | _ :: tail -> count_words (acc + 1) tail
+  in
+  s |> String.split_on_char ' ' |> count_words 0
