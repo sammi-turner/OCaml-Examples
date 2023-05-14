@@ -278,6 +278,14 @@ let to_float (s : string) : float option =
 WORD COUNT
 
 The word_count function takes a string argument and returns the number of words in the string, as delmited by whitespace.
+
+Example:
+
+open Utils
+
+let test = word_count "Mary had a little lamb."
+let () = Printf.printf "%d\n" test
+
 *)
 
 let word_count s =
