@@ -227,9 +227,46 @@ let result = nth_char test 25
 let () = print_endline result
 
 *)
+
 let nth_char (s: string) (n: int) : string =
   if n >= String.length s || n < 0 then ""
   else String.make 1 (String.get s n)
+
+(*
+   
+NTH STRING
+
+The nth_string function takes a list of strings as its argument and returns an option type.
+
+Example:
+
+open Utils
+
+let print_string_option (x : string option) : unit =
+  match x with
+  | Some x -> Printf.printf "%s\n" x
+  | None -> Printf.printf "error\n"
+
+let capitals = ["London";"Paris";"Berlin"]
+
+let city0 = nth_string capitals 0
+let city1 = nth_string capitals 1
+let city2 = nth_string capitals 2
+let city3 = nth_string capitals 3
+
+let () = print_string_option city0
+let () = print_string_option city1
+let () = print_string_option city2
+let () = print_string_option city3
+
+*)
+
+let rec nth_string lst n =
+  match lst with
+  | [] -> None
+  | head :: tail ->
+    if n = 0 then Some head
+    else nth_string tail (n-1)
 
 (*
    
