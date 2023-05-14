@@ -146,21 +146,20 @@ let pseudo n =
 
 (*
    
-PRINT LIST
+WORDS TO SENTENCE
 
-The print_list function iterates over a list of strings and prints each one out with a line break.
+The words_to_sentence function converts a list of strings into a string with a single space between each list element.
 
 Example:
 
 open Utils
 
-let test = ["Mary";"had";"a";"little";"lamb"]
-let () = print_list test
+let test = ["Mary";"had";"a";"little";"lamb."]
+let () = words_to_sentence test
 
 *)
 
-let print_list lst =
-  List.iter (fun s -> print_string s; print_string "\n") lst
+let words_to_sentence lst = String.concat " " lst
 
 (*
    
@@ -172,7 +171,7 @@ open Utils
 
 let test = ["hello";"";"world";"";"ocaml";""]
 let non_empty_strings = remove_empty_strings test
-let () = print_list non_empty_strings
+let () = print_words non_empty_strings
 
 *)
 
