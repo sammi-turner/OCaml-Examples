@@ -304,7 +304,7 @@ let () = print_int_option(to_int "69")
 
 *)
 
-let to_int (s : string) =
+let to_int (s:string) =
   try Some (int_of_string s)
   with Failure _ -> None
 
@@ -328,7 +328,7 @@ let () = print_float_option(to_float "69")
 
 *)
 
-let to_float (s : string) =
+let to_float (s:string) =
   try Some (float_of_string s)
   with Failure _ -> None
 
@@ -400,21 +400,3 @@ let slice_count (s:string) (delim:char) =
     | _ :: tail -> count_words (acc + 1) tail
   in
   s |> String.split_on_char delim |> count_words 0
-
-(*
-   
-NTH WORD
-
-The nth_word function returns the nth word of a sentence (zero-indexed).
-
-Example:
-
-open Utils
-
-let test = "Mary had a little lamb."
-let word = nth_word test 2
-let () = print_endline word
-
-*)
-
-let nth_word (s:string) (n:int) = List.nth (sentence_to_words s) n
