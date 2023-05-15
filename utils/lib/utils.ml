@@ -179,16 +179,8 @@ let () = Printf.printf "Sentence: %s.\n" test
 *)
 
 let sentence_to_words s =
-  let open String in
-  let rec aux acc i =
-    if i >= length s then List.rev acc
-    else
-      let j = try index_from s i ' ' with Not_found -> length s in
-      let word = sub s i (j - i) in
-      let acc' = if word = "" then acc else word :: acc in
-      aux acc' (j + 1)
-  in
-  aux [] 0
+  let words = String.split_on_char ' ' s in
+  List.filter (fun w -> w <> "") words
 
 (*
    
