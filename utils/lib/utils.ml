@@ -124,7 +124,7 @@ let append_to_file name content =
 
 PSEUDO
 
-The pseudo function takes a non-negative integer argument n, and returns an integer between 0 and n - 1.
+The pseudo function takes a non-negative integer argument n, and returns either 0 (when n is 0) or an integer between 0 and n - 1.
 
 Example:
 
