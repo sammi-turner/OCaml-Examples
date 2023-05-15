@@ -14,7 +14,7 @@ let () =
 
 *)
 
-let user_input s =
+let user_input (s:string) =
   print_string s;
   flush stdout;
   read_line ()
@@ -48,7 +48,7 @@ let () = shell "ls -1"
 
 *)
 
-let shell (s) = 
+let shell (s:string) = 
   flush stdout;
   ignore (Sys.command(s))
 
@@ -68,7 +68,7 @@ let () = print_endline content
 
 *)
 
-let read_file name =
+let read_file (name:string) =
   try
     let channel = open_in name in
     let contents = really_input_string channel (in_channel_length channel) in
@@ -82,7 +82,7 @@ let read_file name =
    
 WRITE FILE
 
-The write_file function takes two string arguments. One for a file name and one for the string to write to the named file.
+The write_file function writes a string to a particular file, or overwrites it, if it already exists.
 
 Example:
 
@@ -94,7 +94,7 @@ let () = write_file file message
 
 *)
 
-let write_file name content =
+let write_file (name:string) (content:string) =
   let oc = open_out name in
   output_string oc content;
   close_out oc
@@ -103,7 +103,7 @@ let write_file name content =
    
 APPEND TO FILE
 
-The append_to_file function takes two string arguments. One for a file name and one for the string that is appended to the named file.
+The append_to_file function appends a string to a file, or writes to the file if it does not exist.
 
 Example:
 
@@ -115,7 +115,7 @@ let () = append_to_file file message
 
 *)
 
-let append_to_file name content =
+let append_to_file (name:string) (content:string) =
   let channel = open_out_gen [Open_append; Open_creat] 0o666 name in
   output_string channel content;
   close_out channel
@@ -124,7 +124,7 @@ let append_to_file name content =
 
 PSEUDO
 
-The pseudo function takes a non-negative integer argument n, and returns either 0 (when n is 0) or an integer between 0 and n - 1.
+The pseudo function returns either 0 or an integer between 0 and n - 1.
 
 Example:
 
@@ -138,7 +138,7 @@ let () = Printf.printf "%d %d %d\n" die0 die1 die2
 
 *)
 
-let pseudo n =
+let pseudo (n:int) =
   Random.self_init ();
   match n with
     _ when n > 0 -> Random.int(n)
@@ -159,7 +159,7 @@ let () = words_to_sentence test
 
 *)
 
-let words_to_sentence lst = String.concat " " lst
+let words_to_sentence (lst:string list) = String.concat " " lst
 
 (*
    
@@ -178,7 +178,7 @@ let () = Printf.printf "Sentence: %s.\n" test
 
 *)
 
-let sentence_to_words s =
+let sentence_to_words (s:string) =
   let words = String.split_on_char ' ' s in
   List.filter (fun w -> w <> "") words
 
@@ -186,7 +186,7 @@ let sentence_to_words s =
    
 REMOVE EMPTY STRINGS
 
-The remove_empty_strings function takes a list of strings as its argument and returns the list with all the empty strings removed. 
+The remove_empty_strings function returns a string list with all the empty strings removed. 
 
 open Utils
 
@@ -196,7 +196,7 @@ let () = print_words non_empty_strings
 
 *)
 
-let rec remove_empty_strings lst =
+let rec remove_empty_strings (lst:string list) =
   match lst with
   | [] -> []
   | "" :: tail -> remove_empty_strings tail
@@ -206,35 +206,37 @@ let rec remove_empty_strings lst =
    
 NTH CHAR
 
-The nth_char function takes a string (s) and a non-negative int (n) as arguments. 
-
-It returns either the empty string, or a string containing the nth char of s.
+The nth_char function returns a char option type.
 
 Example:
 
 open Utils
 
-let test = "Mary had a little lamb."
-let result = nth_char test 25
-let () = print_endline result
+let print_char_option (x:char option) =
+  match x with
+  | Some x -> Printf.printf "%c\n" x
+  | None -> Printf.printf "error\n"
+
+let test = nth_char "OCaml" 2
+let () = print_char_option test
 
 *)
 
-let nth_char (s: string) (n: int) : string =
-  if n >= String.length s || n < 0 then ""
-  else String.make 1 (String.get s n)
+let nth_char (s:string) (n:int) =
+  if n < 0 || n >= String.length s then None
+  else Some s.[n]
 
 (*
    
 NTH STRING
 
-The nth_string function takes a list of strings as its argument and returns an option type.
+The nth_string function returns a string option type.
 
 Example:
 
 open Utils
 
-let print_string_option (x : string option) : unit =
+let print_string_option (x:string option) =
   match x with
   | Some x -> Printf.printf "%s\n" x
   | None -> Printf.printf "error\n"
@@ -253,7 +255,7 @@ let () = print_string_option city3
 
 *)
 
-let rec nth_string lst n =
+let rec nth_string (lst:string list) (n:int) =
   match lst with
   | [] -> None
   | head :: tail ->
@@ -264,7 +266,7 @@ let rec nth_string lst n =
    
 IS DIGITS
 
-The is_digits function takes a string argument and returns the boolean true if it consists only of decimal digits, or false if it does not.
+The is_digits function returns the boolean true if it consists only of decimal digits, or false if it does not.
 
 Example:
 
@@ -278,7 +280,7 @@ let () = Printf.printf "%b %b %b\n" test0 test1 test2
 
 *)
 
-let is_digits s =
+let is_digits (s:string) =
   let is_digit c = Char.code c >= 48 && Char.code c <= 57 in
   String.for_all is_digit s
 
@@ -286,13 +288,13 @@ let is_digits s =
 
 TO INT
 
-The to_int function takes a string argument and returns an int option.
+The to_int function returns an int option.
 
 Example:
 
 open Utils
 
-let print_int_option (x : int option) : unit =
+let print_int_option =
   match x with
   | Some x -> Printf.printf "%d\n" x
   | None -> Printf.printf "error\n"
@@ -302,7 +304,7 @@ let () = print_int_option(to_int "69")
 
 *)
 
-let to_int (s : string) : int option =
+let to_int (s : string) =
   try Some (int_of_string s)
   with Failure _ -> None
 
@@ -310,13 +312,13 @@ let to_int (s : string) : int option =
 
 TO FLOAT
 
-The to_float function takes a string argument and returns a float option.
+The to_float function returns a float option.
 
 Example:
 
 open Utils
 
-let print_float_option (x : float option) : unit =
+let print_float_option =
   match x with
   | Some x -> Printf.printf "%f\n" x
   | None -> Printf.printf "error\n"
@@ -326,7 +328,7 @@ let () = print_float_option(to_float "69")
 
 *)
 
-let to_float (s : string) : float option =
+let to_float (s : string) =
   try Some (float_of_string s)
   with Failure _ -> None
 
@@ -334,7 +336,7 @@ let to_float (s : string) : float option =
    
 WORD COUNT
 
-The word_count function takes a string argument and returns the number of words in the string, as delmited by whitespace.
+The word_count function returns the number of words in the string, as delmited by whitespace.
 
 Example:
 
@@ -345,7 +347,7 @@ let () = Printf.printf "%d\n" test
 
 *)
 
-let word_count s =
+let word_count (s:string) =
   let rec count_words acc = function
     | [] -> acc
     | "" :: tail -> count_words acc tail
@@ -357,7 +359,7 @@ let word_count s =
    
 LINE COUNT
 
-The line_count function takes a string argument and returns the number of lines in the string, as delmited by the newline escape character.
+The line_count function returns the number of lines in a string, as delmited by the newline escape character.
 
 Example:
 
@@ -368,7 +370,7 @@ let () = Printf.printf "%d\n" test
 
 *)
 
-let line_count s =
+let line_count (s:string) =
   let rec count_words acc = function
     | [] -> acc
     | "" :: tail -> count_words acc tail
@@ -380,7 +382,7 @@ let line_count s =
    
 SLICE COUNT
 
-The slice_count function takes a string argument and returns the number of lines in the string, as delmited by an arbitrary delimiter.
+The slice_count function returns the number of lines in the string, as delmited by an arbitrary delimiter.
 
 Example:
 
@@ -391,10 +393,28 @@ let () = Printf.printf "%d\n" test
 
 *)
 
-let slice_count s delim =
+let slice_count (s:string) (delim:char) =
   let rec count_words acc = function
     | [] -> acc
     | "" :: tail -> count_words acc tail
     | _ :: tail -> count_words (acc + 1) tail
   in
   s |> String.split_on_char delim |> count_words 0
+
+(*
+   
+NTH WORD
+
+The nth_word function returns the nth word of a sentence (zero-indexed).
+
+Example:
+
+open Utils
+
+let test = "Mary had a little lamb."
+let word = nth_word test 2
+let () = print_endline word
+
+*)
+
+let nth_word (s:string) (n:int) = List.nth (sentence_to_words s) n
