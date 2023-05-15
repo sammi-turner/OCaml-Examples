@@ -352,3 +352,49 @@ let word_count s =
     | _ :: tail -> count_words (acc + 1) tail
   in
   s |> String.split_on_char ' ' |> count_words 0
+
+(*
+   
+LINE COUNT
+
+The line_count function takes a string argument and returns the number of lines in the string, as delmited by the newline escape character.
+
+Example:
+
+open Utils
+
+let test = line_count "Mary\nhad\na\nlittle\nlamb."
+let () = Printf.printf "%d\n" test
+
+*)
+
+let line_count s =
+  let rec count_words acc = function
+    | [] -> acc
+    | "" :: tail -> count_words acc tail
+    | _ :: tail -> count_words (acc + 1) tail
+  in
+  s |> String.split_on_char '\n' |> count_words 0
+
+(*
+   
+SLICE COUNT
+
+The slice_count function takes a string argument and returns the number of lines in the string, as delmited by an arbitrary delimiter.
+
+Example:
+
+open Utils
+
+let test = slice_count "Mary,had,a,little,lamb."
+let () = Printf.printf "%d\n" test
+
+*)
+
+let slice_count s delim =
+  let rec count_words acc = function
+    | [] -> acc
+    | "" :: tail -> count_words acc tail
+    | _ :: tail -> count_words (acc + 1) tail
+  in
+  s |> String.split_on_char delim |> count_words 0
