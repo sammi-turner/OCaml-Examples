@@ -148,14 +148,14 @@ let pseudo (n:int) =
    
 WORDS TO SENTENCE
 
-The words_to_sentence function converts a list of strings into a string with a single space between each list element.
+The words_to_sentence function converts a list of strings into a string with a space between each list element.
 
 Example:
 
 open Utils
 
-let test = ["Mary";"had";"a";"little";"lamb."]
-let () = words_to_sentence test
+let test = words_to_sentence ["Mary";"had";"a";"little";"lamb."]
+let () = print_endline test
 
 *)
 
@@ -163,9 +163,26 @@ let words_to_sentence (lst:string list) = String.concat " " lst
 
 (*
    
+LINES TO SENTENCE
+
+The lines_to_sentence function converts a list of strings into a string with a newline character between each list element.
+
+Example:
+
+open Utils
+
+let test = words_to_lines ["Mary";"had";"a";"little";"lamb."]
+let () = print_endline test
+
+*)
+
+let lines_to_sentence (lst:string list) = String.concat "\n" lst
+
+(*
+   
 SENTENCE TO WORDS
 
-The sentence_to_words function converts a strings into a list of words with whitespace as delimiter.
+The sentence_to_words function converts a string into a list of words with whitespace as delimiter.
 
 Example:
 
@@ -180,6 +197,27 @@ let () = Printf.printf "Sentence: %s.\n" test
 
 let sentence_to_words (s:string) =
   let words = String.split_on_char ' ' s in
+  List.filter (fun w -> w <> "") words
+
+(*
+   
+SENTENCE TO LINES
+
+The sentence_to_lines function converts a string into a list of words with the newline character as delimiter.
+
+Example:
+
+open Utils
+
+let sentence = "Mary   had   a   little   lamb"
+let lines = words_to_lines sentence
+let test = lines_to_words lines
+let () = Printf.printf "Sentence: %s.\n" test
+
+*)
+
+let sentence_to_lines (s:string) =
+  let words = String.split_on_char '\n' s in
   List.filter (fun w -> w <> "") words
 
 (*
