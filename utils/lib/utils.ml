@@ -175,7 +175,7 @@ let slices_to_sentence lst ch =
    
 SENTENCE TO SLICES
 
-The sentence_to_slices function converts a string into a list of strings with the arbitrary character as delimiter.
+The sentence_to_slices function converts a string into a list of strings with an arbitrary character as delimiter.
 
 Example:
 
@@ -346,7 +346,7 @@ let to_float (s:string) =
    
 SLICE COUNT
 
-The slice_count function returns the number of lines in the string, as delmited by an arbitrary character.
+The slice_count function returns the number of slices in the string, as delmited by an arbitrary character.
 
 Example:
 
