@@ -56,7 +56,7 @@ let shell (s:string) =
    
 READ FILE
 
-The read_file function will return the option None if the file does not exist in the working directory, or the option Some with the contents of the file, if it does. 
+The read_file function returns a string option.
 
 Example:
 
@@ -216,7 +216,7 @@ let rec remove_empty_strings (lst:string list) =
    
 NTH CHAR
 
-The nth_char function returns a char option type.
+The nth_char function returns a char option.
 
 Example:
 
@@ -240,7 +240,7 @@ let nth_char (s:string) (n:int) =
    
 NTH STRING
 
-The nth_string function returns a string option type.
+The nth_string function returns a string option.
 
 Example:
 
@@ -344,55 +344,9 @@ let to_float (s:string) =
 
 (*
    
-WORD COUNT
-
-The word_count function returns the number of words in the string, as delmited by whitespace.
-
-Example:
-
-open Utils
-
-let test = word_count "Mary had a little lamb."
-let () = Printf.printf "%d\n" test
-
-*)
-
-let word_count (s:string) =
-  let rec count_words acc = function
-    | [] -> acc
-    | "" :: tail -> count_words acc tail
-    | _ :: tail -> count_words (acc + 1) tail
-  in
-  s |> String.split_on_char ' ' |> count_words 0
-
-(*
-   
-LINE COUNT
-
-The line_count function returns the number of lines in a string, as delmited by the newline escape character.
-
-Example:
-
-open Utils
-
-let test = line_count "Mary\nhad\na\nlittle\nlamb."
-let () = Printf.printf "%d\n" test
-
-*)
-
-let line_count (s:string) =
-  let rec count_words acc = function
-    | [] -> acc
-    | "" :: tail -> count_words acc tail
-    | _ :: tail -> count_words (acc + 1) tail
-  in
-  s |> String.split_on_char '\n' |> count_words 0
-
-(*
-   
 SLICE COUNT
 
-The slice_count function returns the number of lines in the string, as delmited by an arbitrary delimiter.
+The slice_count function returns the number of lines in the string, as delmited by an arbitrary character.
 
 Example:
 
