@@ -23,7 +23,7 @@ let user_input (s:string) =
    
 IS UNIX
 
-The is_unix function returns true if the command is being run on a unix-like operating system, or false otherwise.
+The is_unix function returns true if the program is being run on a unix-like operating system, or false if it is not.
 
 *)
 
@@ -107,7 +107,7 @@ let write_file (name:string) (content:string) =
    
 APPEND TO FILE
 
-The append_to_file function appends a string to a file, or writes to the file if it does not exist.
+The append_to_file function either appends a string to a file, or writes to the file if it does not already exist.
 
 Example:
 
@@ -196,7 +196,7 @@ let sentence_to_slices (s:string) (ch:char) =
    
 REMOVE EMPTY STRINGS
 
-The remove_empty_strings function returns a string list with all the empty strings removed. 
+The remove_empty_strings function returns the non-empty strings from a list. 
 
 open Utils
 
@@ -276,7 +276,7 @@ let rec nth_string (lst:string list) (n:int) =
    
 IS DIGITS
 
-The is_digits function returns the boolean true if it consists only of decimal digits, or false if it does not.
+The is_digits function returns the boolean true if a string consists only of decimal digits, or false if it does not.
 
 Example:
 
@@ -346,7 +346,7 @@ let to_float (s:string) =
    
 SLICE COUNT
 
-The slice_count function returns the number of slices in the string, as delmited by an arbitrary character.
+The slice_count function returns the number of slices in a string, as delmited by an arbitrary character.
 
 Example:
 
