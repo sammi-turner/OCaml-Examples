@@ -150,78 +150,46 @@ let pseudo (n:int) =
 
 (*
    
-WORDS TO SENTENCE
+SLICES TO SENTENCE
 
-The words_to_sentence function converts a list of strings into a string with a space between each list element.
+The slices_to_sentence function converts a list of strings into a string with an arbitrary character between each list element.
 
 Example:
 
 open Utils
 
-let test = words_to_sentence ["Mary";"had";"a";"little";"lamb."]
+let test = slices_to_sentence ["Mary";"had";"a";"little";"lamb."] ' '
 let () = print_endline test
 
 *)
 
-let words_to_sentence (lst:string list) = String.concat " " lst
+let slices_to_sentence lst ch =
+  let rec join acc = function
+    | [] -> acc
+    | [x] -> acc ^ x
+    | x :: xs -> join (acc ^ x ^ String.make 1 ch) xs
+  in
+  join "" lst
 
 (*
    
-LINES TO SENTENCE
+SENTENCE TO SLICES
 
-The lines_to_sentence function converts a list of strings into a string with a newline character between each list element.
+The sentence_to_slices function converts a string into a list of strings with the arbitrary character as delimiter.
 
 Example:
 
 open Utils
 
-let test = words_to_lines ["Mary";"had";"a";"little";"lamb."]
-let () = print_endline test
-
-*)
-
-let lines_to_sentence (lst:string list) = String.concat "\n" lst
-
-(*
-   
-SENTENCE TO WORDS
-
-The sentence_to_words function converts a string into a list of words with whitespace as delimiter.
-
-Example:
-
-open Utils
-
-let sentence = "Mary   had   a   little   lamb"
-let words = sentence_to_words sentence
-let test = words_to_sentence words
+let sentence = "Mary,had,a,little,lamb"
+let slices = sentence_to_slices sentence ','
+let test = slices_to_sentence slices '#'
 let () = Printf.printf "Sentence: %s.\n" test
 
 *)
 
-let sentence_to_words (s:string) =
-  let words = String.split_on_char ' ' s in
-  List.filter (fun w -> w <> "") words
-
-(*
-   
-SENTENCE TO LINES
-
-The sentence_to_lines function converts a string into a list of words with the newline character as delimiter.
-
-Example:
-
-open Utils
-
-let sentence = "Mary   had   a   little   lamb"
-let lines = sentence_to_lines sentence
-let test = lines_to_sentence lines
-let () = Printf.printf "Sentence: %s.\n" test
-
-*)
-
-let sentence_to_lines (s:string) =
-  let words = String.split_on_char '\n' s in
+let sentence_to_slices (s:string) (ch:char) =
+  let words = String.split_on_char ch s in
   List.filter (fun w -> w <> "") words
 
 (*
