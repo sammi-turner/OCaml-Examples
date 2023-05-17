@@ -210,8 +210,8 @@ Example:
 open Utils
 
 let sentence = "Mary   had   a   little   lamb"
-let lines = words_to_lines sentence
-let test = lines_to_words lines
+let lines = sentence_to_lines sentence
+let test = lines_to_sentence lines
 let () = Printf.printf "Sentence: %s.\n" test
 
 *)
