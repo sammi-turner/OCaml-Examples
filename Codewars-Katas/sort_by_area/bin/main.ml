@@ -23,7 +23,7 @@ type shape =
   | Rectangle of float * float
   | Circle of float
 
-let sort_by_area (shapes: shape list): shape list =
+let sort_by_area (shapes:shape list) =
   let area = function 
   | Circle r -> Float.pi *. r *. r 
   | Rectangle (a, b) -> a *. b in
