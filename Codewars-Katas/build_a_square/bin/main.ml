@@ -14,7 +14,7 @@ n = 3, so I expect a 3x3 square back just like below as a string.
 
 *)
 
-let generate_shape (n: int): string =
+let generate_shape (n: int) =
   List.init n (fun _ -> String.make n '+')
   |> String.concat "\n"
 
