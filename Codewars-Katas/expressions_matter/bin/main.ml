@@ -24,7 +24,7 @@ You cannot cannot change the order in which the operands appear.
 
 *)
 
-let expression_matter a b c =
+let expression_matter (a:int) (b:int) (c:int) =
   let max_pair x y = 
     max (x * y) (x + y)
   in
