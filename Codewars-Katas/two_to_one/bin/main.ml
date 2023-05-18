@@ -20,7 +20,7 @@ longest a b -> "abcdefgh"
 
 *)
 
-let longest (s1 : string) (s2 : string) : string =
+let longest (s1:string) (s2:string) =
   let chars = List.sort_uniq Char.compare (List.append (String.to_seq s1 |> List.of_seq) (String.to_seq s2 |> List.of_seq)) in
   String.of_seq (List.to_seq chars)
 
