@@ -16,7 +16,7 @@ int_rac 125348 300 has a progression of 300, 358, 354 so our function should ret
 
 *)
 
-let int_rac (n : int) (guess : int) =
+let int_rac (n:int) (guess:int) =
   let rec aux n x c = 
     let e = 1 in 
     let new_x = (x + n / x) / 2 in 
