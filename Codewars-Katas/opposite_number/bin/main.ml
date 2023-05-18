@@ -10,7 +10,7 @@ Examples:
 
 *)
 
-let opposite (number : int) : int =
+let opposite (number:int) =
   if number = 0 then 0 else (-1) * number
 
 let test0 = opposite 1
