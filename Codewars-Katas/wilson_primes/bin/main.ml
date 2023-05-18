@@ -6,7 +6,7 @@ https://t5k.org/glossary/page.php?sort=WilsonPrime
 
 *)
 
-let i_am_a_wilson_prime n = n == 5 || n == 13 || n == 563
+let i_am_a_wilson_prime (n:int) = n == 5 || n == 13 || n == 563
 
 let test0 = i_am_a_wilson_prime 2
 let test1 = i_am_a_wilson_prime 3
