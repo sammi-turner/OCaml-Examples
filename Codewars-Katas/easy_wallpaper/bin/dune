@@ -1,0 +1,4 @@
+(executable
+ (public_name easy_wallpaper)
+ (name main)
+ (libraries easy_wallpaper))
