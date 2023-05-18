@@ -10,9 +10,9 @@ Examples:
 
 *)
 
-let positive_sum ls =
+let positive_sum (lst:int list) =
   let sum = ref 0 in
-  List.iter (fun x -> if x > 0 then sum := !sum + x) ls;
+  List.iter (fun x -> if x > 0 then sum := !sum + x) lst;
   !sum
 
 let test0 = positive_sum []
