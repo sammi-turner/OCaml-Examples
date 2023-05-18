@@ -12,7 +12,7 @@ Examples:
 
 *)
 
-let angle n = (n - 2) * 180
+let angle (n:int) = (n - 2) * 180
 
 let test3 = angle 3
 let test4 = angle 4
