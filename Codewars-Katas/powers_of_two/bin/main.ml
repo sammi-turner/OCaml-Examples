@@ -11,7 +11,7 @@ n = 2  ==> [1, 2, 4]
 
 *)
 
-let powersOfTwo n = List.init (n + 1) ((lsl) 1)
+let powersOfTwo (n:int) = List.init (n + 1) ((lsl) 1)
 
 let a = powersOfTwo 0
 let b = powersOfTwo 1
