@@ -13,7 +13,7 @@ is_palindrome "wow" => true
 
 *)
 
-let is_palindrome s =
+let is_palindrome (s:string) =
   let len = String.length s in
   let lower = String.lowercase_ascii s in
   let rec loop i =
