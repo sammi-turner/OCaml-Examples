@@ -16,7 +16,7 @@ Examples:
 
 *)
 
-let find_multiples (integer:int) (limit:int): int list =
+let find_multiples (integer:int) (limit:int) =
   List.init (limit/ integer) (fun x -> (x + 1) * integer)
 
 let test0 = find_multiples 2 6
