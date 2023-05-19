@@ -1,0 +1,4 @@
+(executable
+ (public_name deodorant_evaporator)
+ (name main)
+ (libraries deodorant_evaporator))
