@@ -163,7 +163,7 @@ let () = print_endline test
 
 *)
 
-let slices_to_sentence lst ch =
+let slices_to_sentence (lst:string list) (ch:char) =
   let rec join acc = function
     | [] -> acc
     | [x] -> acc ^ x
