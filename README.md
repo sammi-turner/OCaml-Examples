@@ -1,8 +1,8 @@
 # OCaml Examples
 
-## Installation
+## Install Opam
 
-To install OCaml, follow [these instructions](https://ocaml.org/docs/up-and-running).
+To install opam, follow [these instructions](https://ocaml.org/docs/up-and-running).
 
 ## Install Dune
 
@@ -22,7 +22,7 @@ dune --version
 
 ## Ignore build progress
 
-To prevent meaningless build progress reports from being printed, create a global dune config file.
+To prevent meaningless progress reports from being printed before your programs run, create a global dune config file.
 
 On unix systems, this will be located at
 
@@ -30,7 +30,7 @@ On unix systems, this will be located at
 ~/.config/dune/config
 ```
 
-Add the following code to config file, replacing 3.7 with the version number that you are running.
+Add the following code to the file, replacing 3.7 with the version number that you are running.
 
 ```
 (lang dune 3.7)
