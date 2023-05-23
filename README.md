@@ -20,9 +20,9 @@ Determine the version of dune you are running with the command
 dune --version
 ```
 
-## Ignore build progress
+## Quiet output
 
-To prevent meaningless progress reports from being printed before your programs run, create a global dune config file.
+To prevent build progress reports from being printed before your programs run, create a global dune config file.
 
 On unix systems, this will be located at
 
