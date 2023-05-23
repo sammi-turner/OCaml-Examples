@@ -417,5 +417,4 @@ let () = print_list capitals
 
 *)
 
-let print_list lst =
-  List.iter (fun str -> print_endline str) lst
+let print_list (lst:string list) = List.iter (fun str -> print_endline str) lst
