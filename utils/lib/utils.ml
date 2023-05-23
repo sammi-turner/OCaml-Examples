@@ -274,25 +274,62 @@ let rec nth_string (lst:string list) (n:int) =
 
 (*
    
-IS DIGITS
+IS DIGIT
 
-The is_digits function returns the boolean true if a string consists only of decimal digits, or false if it does not.
+The is_digit function returns the boolean true if a char is a decimal digit, or false if it is not.
 
 Example:
 
 open Utils
 
-let test0 = is_digits "12345"
-let test1 = is_digits "00671"
-let test2 = is_digits "a1234"
+let test0 = is_digit '0'
+let test1 = is_digit '9'
+let test2 = is_digit 'a'
+
+let () = Printf.printf "%b %b %b\n" test0 test1 test2
+
+*)
+let is_digit (c:char) = Char.code c >= 48 && Char.code c <= 57
+
+(*
+
+IS LOWER CASE
+
+The is_lower_case function returns the boolean true if a char is a lower case ascii letter, or false if it is not.
+
+Example:
+
+open Utils
+
+let test0 = is_lower_case 'a'
+let test1 = is_lower_case 'A'
+let test2 = is_lower_case ' '
 
 let () = Printf.printf "%b %b %b\n" test0 test1 test2
 
 *)
 
-let is_digits (s:string) =
-  let is_digit c = Char.code c >= 48 && Char.code c <= 57 in
-  String.for_all is_digit s
+let is_lower_case (c:char) = Char.code c >= 97 && Char.code c <= 122
+
+(*
+
+IS UPPER CASE
+
+The is_upper_case function returns the boolean true if a char is an upper case ascii letter, or false if it is not.
+
+Example:
+
+open Utils
+
+let test0 = is_upper_case 'a'
+let test1 = is_upper_case 'A'
+let test2 = is_upper_case ' '
+
+let () = Printf.printf "%b %b %b\n" test0 test1 test2
+
+*)
+
+let is_upper_case (c:char) = Char.code c >= 65 && Char.code c <= 90
 
 (*
 
@@ -352,7 +389,7 @@ Example:
 
 open Utils
 
-let test = slice_count "Mary,had,a,little,lamb."
+let test = slice_count "Mary,had,a,little,lamb." ','
 let () = Printf.printf "%d\n" test
 
 *)
@@ -364,3 +401,21 @@ let slice_count (s:string) (delim:char) =
     | _ :: tail -> count_words (acc + 1) tail
   in
   s |> String.split_on_char delim |> count_words 0
+
+(*
+   
+PRINT LIST
+
+The print_list function prints out a list of strings with each string on a new line.
+
+Example:
+
+open Utils
+
+let capitals = ["London";"Paris";"Berlin";"Rome"]
+let () = print_list capitals
+
+*)
+
+let print_list lst =
+  List.iter (fun str -> print_endline str) lst
