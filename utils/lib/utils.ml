@@ -357,6 +357,29 @@ let to_int (s:string) =
 
 (*
 
+IS INT
+
+The is_int function returns the boolean true if a string represents an integer, or false if it does not.
+
+Example:
+
+open Utils
+
+let test0 = is_int "abc"
+let test1 = is_int "42"
+
+let () = Printf.printf "%b %b\n" test0 test1
+
+*)
+
+let is_int (s:string) = 
+  let x = to_int s in
+  match x with
+  | None -> false
+  | _ -> true
+
+(*
+
 TO FLOAT
 
 The to_float function returns a float option.
@@ -380,6 +403,29 @@ let to_float (s:string) =
   with Failure _ -> None
 
 (*
+
+IS FLOAT
+
+The is_float function returns the boolean true if a string represents a float, or false if it does not.
+
+Example:
+
+open Utils
+
+let test0 = is_float "abc"
+let test1 = is_float "69.420"
+
+let () = Printf.printf "%b %b\n" test0 test1
+
+*)
+
+let is_float (s:string) = 
+  let x = to_float s in
+  match x with
+  | None -> false
+  | _ -> true
+
+(*
    
 SLICE COUNT
 
@@ -389,7 +435,7 @@ Example:
 
 open Utils
 
-let test = slice_count "Mary,had,a,little,lamb." ','
+let test = slice_count "Mary,had,a,little,lamb."
 let () = Printf.printf "%d\n" test
 
 *)
