@@ -7,5 +7,5 @@ let read_file name =
   with
     | Sys_error _ -> ""
 
-let content = read_file "dog.txt"
+let content = read_file "example.txt"
 let () = print_endline content
