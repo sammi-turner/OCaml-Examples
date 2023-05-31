@@ -64,12 +64,13 @@ Repeat this process until either the code compiles, or the LLM keeps repeating t
 
 In the event of repetitive mistakes from Chat-GPT, press the "regenerate response" button.
 
-If the generated code compiles, but running the generated function does not behave as expected, try the following steps in order.
+If the generated code compiles, but the generated function does not behave as expected, try the following steps in order.
 
 ```
 1. Check the wording of the problem statement. Should it be reworded?
 2. Given that LLMs are known to "hallucinate", are there any subtle errors in the code, which you can correct manually?
 3. Press the "regenerate response button".
+```
 
 ## Useful shell function
 
