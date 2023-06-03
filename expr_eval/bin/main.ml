@@ -23,18 +23,22 @@ let token_type (s:string) =
   | "*" -> "MULTIPLY"
   | "/" -> "DIVIDE"
   | "mod" -> "MOD"
-  | f when is_float f -> "FLOAT: " ^ s
-  | _ -> "INVALID"
+  | f when is_float f -> "FLOAT " ^ s
+  | _ -> "INVALID " ^ s
 
-let lexer (lst:string list) =
+let lexer (s:string) =
+  let p = pad_parens s in
+  let w = whitespace_delimit p in
   let rec tokenize = function
     | [] -> []
     | head :: tail -> token_type head :: tokenize tail
   in
-  tokenize lst
+  tokenize w
 
-let test0 = pad_parens "(2 + 3) - (7 * 41)"
-let test1 = whitespace_delimit test0
-let test2 = lexer test1
+let test0 = lexer "(2 + 3) - (7 * 41)"
+let test1 = lexer "(2 + kitten) - (7 mod 41)"
 
-let () = print_list test2
+let () = print_list test0
+let () = print_endline ""
+let () = print_list test1
+
