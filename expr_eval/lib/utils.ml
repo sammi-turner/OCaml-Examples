@@ -251,7 +251,7 @@ let () = Printf.printf "%i\n" char_count
 
 *)
 
-let count_char_instances (s : string) (c : char) =
+let count_char_instances (s:string) (c:char) =
   let rec count_helper i count =
     if i < 0 then count
     else if s.[i] = c then count_helper (i - 1) (count + 1)
@@ -294,6 +294,32 @@ let rec nth_string (lst:string list) (n:int) =
   | head :: tail ->
     if n = 0 then Some head
     else nth_string tail (n-1)
+
+(*
+   
+COUNT STRING INSTANCES
+
+The count_string_instances function returns the integer number of instances of a string in a list of strings.
+
+Example:
+
+open Utils
+
+let lst = ["Oh";"Denny";"Denny";"Denny";"boy"]
+let count = count_string_instances lst "Denny"
+let () = Printf.printf "%d\n" count
+
+*)
+
+let rec count_string_instances (lst:string list) (s:string) =
+  match lst with
+  | [] -> 0
+  | head::tail ->
+    let count_rest = count_string_instances tail s in
+    if head = s then
+      1 + count_rest
+    else
+      count_rest
 
 (*
    
