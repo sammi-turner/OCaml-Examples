@@ -297,6 +297,32 @@ let rec nth_string (lst:string list) (n:int) =
 
 (*
    
+COUNT STRING INSTANCES
+
+The count_string_instances function returns the integer number of instances of a string in a list of strings.
+
+Example:
+
+open Utils
+
+let lst = ["Oh";"Denny";"Denny";"Denny";"boy"]
+let count = count_string_instances lst "Denny"
+let () = Printf.printf "%d\n" count
+
+*)
+
+let rec count_string_instances lst s =
+  match lst with
+  | [] -> 0
+  | head::tail ->
+    let count_rest = count_string_instances tail s in
+    if head = s then
+      1 + count_rest
+    else
+      count_rest
+
+(*
+   
 IS DIGIT
 
 The is_digit function returns the boolean true if a char is a decimal digit, or false if it is not.
