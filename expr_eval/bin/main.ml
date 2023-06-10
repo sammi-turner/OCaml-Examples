@@ -1,6 +1,6 @@
 open Utils
 
-let whitespace_delimit (s:string) = sentence_to_slices s ' '
+let whitespace_delimit (s:string) = string_to_slices s ' '
 
 let pad_parens (s:string) =
 let padded_chars =
@@ -41,4 +41,3 @@ let test1 = lexer "(2 + kitten) - (7 mod 41)"
 let () = print_list test0
 let () = print_endline ""
 let () = print_list test1
-

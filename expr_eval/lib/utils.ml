@@ -93,7 +93,7 @@ Example:
 open Utils
 
 let file = "example.txt"
-let message = "Hello, world!"
+let message = "Oh, hi Mark!"
 let () = write_file file message
 
 *)
@@ -150,20 +150,20 @@ let pseudo (n:int) =
 
 (*
    
-SLICES TO SENTENCE
+SLICES TO STRING
 
-The slices_to_sentence function converts a list of strings into a string with an arbitrary character between each list element.
+The slices_to_string function converts a list of strings into a string with an arbitrary character between each list element.
 
 Example:
 
 open Utils
 
-let test = slices_to_sentence ["Mary";"had";"a";"little";"lamb."] ' '
+let test = slices_to_string ["You're";"tearing";"me";"apart";"Lisa!"] ' '
 let () = print_endline test
 
 *)
 
-let slices_to_sentence (lst:string list) (ch:char) =
+let slices_to_string (lst:string list) (ch:char) =
   let rec join acc = function
     | [] -> acc
     | [x] -> acc ^ x
@@ -173,22 +173,22 @@ let slices_to_sentence (lst:string list) (ch:char) =
 
 (*
    
-SENTENCE TO SLICES
+STRING TO SLICES
 
-The sentence_to_slices function converts a string into a list of strings with an arbitrary character as delimiter.
+The string_to_slices function converts a string into a list of strings with an arbitrary character as delimiter.
 
 Example:
 
 open Utils
 
-let sentence = "Mary,had,a,little,lamb"
-let slices = sentence_to_slices sentence ','
-let test = slices_to_sentence slices '#'
-let () = Printf.printf "Sentence: %s.\n" test
+let string = "You're,my,best,customer"
+let slices = string_to_slices string ','
+let test = slices_to_string slices '#'
+let () = Printf.printf "string: %s.\n" test
 
 *)
 
-let sentence_to_slices (s:string) (ch:char) =
+let string_to_slices (s:string) (ch:char) =
   let words = String.split_on_char ch s in
   List.filter (fun w -> w <> "") words
 
@@ -200,7 +200,7 @@ The remove_empty_strings function returns the non-empty strings from a list.
 
 open Utils
 
-let test = ["hello";"";"world";"";"ocaml";""]
+let test = ["hello";"";"doggie";"";""]
 let non_empty_strings = remove_empty_strings test
 let () = print_words non_empty_strings
 
@@ -238,6 +238,29 @@ let nth_char (s:string) (n:int) =
 
 (*
    
+COUNT CHAR INSTANCES
+
+The count_char_instances function returns the number of instances of a char in a string.
+
+Example:
+
+open Utils
+
+let char_count = count_char_instances "What a story Mark" 'a'
+let () = Printf.printf "%i\n" char_count
+
+*)
+
+let count_char_instances (s : string) (c : char) =
+  let rec count_helper i count =
+    if i < 0 then count
+    else if s.[i] = c then count_helper (i - 1) (count + 1)
+    else count_helper (i - 1) count
+  in
+  count_helper (String.length s - 1) 0
+
+(*
+   
 NTH STRING
 
 The nth_string function returns a string option.
@@ -251,17 +274,17 @@ let print_string_option (x:string option) =
   | Some x -> Printf.printf "%s\n" x
   | None -> Printf.printf "error\n"
 
-let capitals = ["London";"Paris";"Berlin"]
+let people = ["Mark";"Lisa";"Johnny"]
 
-let city0 = nth_string capitals 0
-let city1 = nth_string capitals 1
-let city2 = nth_string capitals 2
-let city3 = nth_string capitals 3
+let person0 = nth_string people 0
+let person1 = nth_string people 1
+let person2 = nth_string people 2
+let person3 = nth_string people 3
 
-let () = print_string_option city0
-let () = print_string_option city1
-let () = print_string_option city2
-let () = print_string_option city3
+let () = print_string_option person0
+let () = print_string_option person1
+let () = print_string_option person2
+let () = print_string_option person3
 
 *)
 
@@ -435,7 +458,7 @@ Example:
 
 open Utils
 
-let test = slice_count "Mary,had,a,little,lamb."
+let test = slice_count "You're,tearing,me,apart,Lisa!"
 let () = Printf.printf "%d\n" test
 
 *)
@@ -458,8 +481,8 @@ Example:
 
 open Utils
 
-let capitals = ["London";"Paris";"Berlin";"Rome"]
-let () = print_list capitals
+let people = ["Mark";"Lisa";"Johnny"]
+let () = print_list people
 
 *)
 
