@@ -276,10 +276,10 @@ let print_string_option (x:string option) =
 
 let people = ["Mark";"Lisa";"Johnny"]
 
-let person0 = nth_string capitals 0
-let person1 = nth_string capitals 1
-let person2 = nth_string capitals 2
-let person3 = nth_string capitals 3
+let person0 = nth_string people 0
+let person1 = nth_string people 1
+let person2 = nth_string people 2
+let person3 = nth_string people 3
 
 let () = print_string_option person0
 let () = print_string_option person1
