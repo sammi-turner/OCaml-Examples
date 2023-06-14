@@ -35,9 +35,20 @@ let lexer (s:string) =
   in
   tokenize w
 
-let test0 = lexer "(2 + 3) - (7 * 41)"
-let test1 = lexer "(2 + kitten) - (7 mod 41)"
+let paren_balance (lst:string list) =
+  (count_string_instances lst "LPAREN") == (count_string_instances lst "RPAREN")
 
-let () = print_list test0
-let () = print_endline ""
-let () = print_list test1
+let valid_parens (lst:string list) =
+  let rec check_parens lp_count rp_count = function
+    | [] -> true
+    | "LPAREN"::tail -> check_parens (lp_count + 1) rp_count tail
+    | "RPAREN"::tail ->
+      if lp_count > rp_count then check_parens lp_count (rp_count + 1) tail
+      else false
+    | _::tail -> check_parens lp_count rp_count tail
+  in
+  check_parens 0 0 lst && paren_balance lst
+  
+let test0 = lexer "(2 + 3) - (7 * 41)"
+
+let () = Printf.printf "%b\n" (valid_parens test0)
