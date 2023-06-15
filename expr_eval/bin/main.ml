@@ -18,37 +18,19 @@ let token_type (s:string) =
   match s with
   | "(" -> "LPAREN"
   | ")" -> "RPAREN"
-  | "+" -> "PLUS"
-  | "-" -> "MINUS"
-  | "*" -> "MULTIPLY"
-  | "/" -> "DIVIDE"
-  | "mod" -> "MOD"
+  | "+" | "-" | "*" | "/" | "pow" | "mod" -> "BINOP " ^ s
   | f when is_float f -> "FLOAT " ^ s
   | _ -> "INVALID " ^ s
 
 let lexer (s:string) =
   let p = pad_parens s in
   let w = whitespace_delimit p in
+  let r = remove_empty_strings w in
   let rec tokenize = function
     | [] -> []
     | head :: tail -> token_type head :: tokenize tail
   in
-  tokenize w
-
-let paren_balance (lst:string list) =
-  (count_string_instances lst "LPAREN") == (count_string_instances lst "RPAREN")
-
-let valid_parens (lst:string list) =
-  let rec check_parens lp_count rp_count = function
-    | [] -> true
-    | "LPAREN"::tail -> check_parens (lp_count + 1) rp_count tail
-    | "RPAREN"::tail ->
-      if lp_count > rp_count then check_parens lp_count (rp_count + 1) tail
-      else false
-    | _::tail -> check_parens lp_count rp_count tail
-  in
-  check_parens 0 0 lst && paren_balance lst
+  tokenize r
   
 let test0 = lexer "(2 + 3) - (7 * 41)"
-
-let () = Printf.printf "%b\n" (valid_parens test0)
+let () = print_list test0
