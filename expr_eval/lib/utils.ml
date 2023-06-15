@@ -173,27 +173,6 @@ let slices_to_string (lst:string list) (ch:char) =
 
 (*
    
-STRING TO SLICES
-
-The string_to_slices function converts a string into a list of strings with an arbitrary character as delimiter.
-
-Example:
-
-open Utils
-
-let string = "You're,my,best,customer"
-let slices = string_to_slices string ','
-let test = slices_to_string slices '#'
-let () = Printf.printf "string: %s.\n" test
-
-*)
-
-let string_to_slices (s:string) (ch:char) =
-  let words = String.split_on_char ch s in
-  List.filter (fun w -> w <> "") words
-
-(*
-   
 REMOVE EMPTY STRINGS
 
 The remove_empty_strings function returns the non-empty strings from a list. 
