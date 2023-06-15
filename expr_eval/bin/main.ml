@@ -1,6 +1,6 @@
 open Utils
 
-let whitespace_delimit (s:string) = string_to_slices s ' '
+let whitespace_delimit (s:string) = String.split_on_char ' ' s
 
 let pad_parens (s:string) =
 let padded_chars =
