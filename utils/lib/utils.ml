@@ -302,6 +302,27 @@ let rec count_string_instances (lst:string list) (s:string) =
 
 (*
    
+NTH SLICE
+
+The nth_slice function returns either an empty string or a slice from the argument string.
+
+Example:
+
+open Utils
+
+let () = print_endline (nth_slice 3 "This is a test" ' ')
+
+*)
+
+let nth_slice (n:int) (s:string) (c:char) =
+  let words = String.split_on_char c s in
+  if n < List.length words then
+    List.nth words n
+  else
+    ""
+
+(*
+   
 IS DIGIT
 
 The is_digit function returns the boolean true if a char is a decimal digit, or false if it is not.
