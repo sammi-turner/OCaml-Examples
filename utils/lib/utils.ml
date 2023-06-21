@@ -14,7 +14,7 @@ let () =
 
 *)
 
-let user_input (s:string) =
+let user_input (s:string) : string =
   print_string s;
   flush stdout;
   read_line ()
@@ -27,7 +27,7 @@ The is_unix function returns true if the program is being run on a unix-like ope
 
 *)
 
-let is_unix () =
+let is_unix () : bool =
   let os_type = Sys.os_type in
   match os_type with
   | "Unix" | "Cygwin" | "MacOS" -> true
@@ -48,7 +48,7 @@ let () = shell "ls -1"
 
 *)
 
-let shell (s:string) = 
+let shell (s:string) : unit = 
   flush stdout;
   ignore (Sys.command(s))
 
@@ -73,7 +73,7 @@ let () = print_file_contents content
 
 *)
 
-let read_file (name:string) =
+let read_file (name:string) : string option =
   try
     let channel = open_in name in
     let contents = really_input_string channel (in_channel_length channel) in
@@ -98,7 +98,7 @@ let () = write_file file message
 
 *)
 
-let write_file (name:string) (content:string) =
+let write_file (name:string) (content:string) : unit =
   let oc = open_out name in
   output_string oc content;
   close_out oc
@@ -119,7 +119,7 @@ let () = append_to_file file message
 
 *)
 
-let append_to_file (name:string) (content:string) =
+let append_to_file (name:string) (content:string) : unit =
   let channel = open_out_gen [Open_append; Open_creat] 0o666 name in
   output_string channel content;
   close_out channel
@@ -142,7 +142,7 @@ let () = Printf.printf "%d %d %d\n" die0 die1 die2
 
 *)
 
-let pseudo (n:int) =
+let pseudo (n:int) : int =
   Random.self_init ();
   match n with
     _ when n > 0 -> Random.int(n)
@@ -163,7 +163,7 @@ let () = print_endline test
 
 *)
 
-let slices_to_string (lst:string list) (ch:char) =
+let slices_to_string (lst:string list) (ch:char) : string =
   let rec join acc = function
     | [] -> acc
     | [x] -> acc ^ x
@@ -185,7 +185,7 @@ let () = print_words non_empty_strings
 
 *)
 
-let rec remove_empty_strings (lst:string list) =
+let rec remove_empty_strings (lst:string list) : string list =
   match lst with
   | [] -> []
   | "" :: tail -> remove_empty_strings tail
@@ -211,7 +211,7 @@ let () = print_char_option test
 
 *)
 
-let nth_char (s:string) (n:int) =
+let nth_char (s:string) (n:int) : char option  =
   if n < 0 || n >= String.length s then None
   else Some s.[n]
 
@@ -230,7 +230,7 @@ let () = Printf.printf "%i\n" char_count
 
 *)
 
-let count_char_instances (s:string) (c:char) =
+let count_char_instances (s:string) (c:char) : int =
   let rec count_helper i count =
     if i < 0 then count
     else if s.[i] = c then count_helper (i - 1) (count + 1)
@@ -267,7 +267,7 @@ let () = print_string_option person3
 
 *)
 
-let rec nth_string (lst:string list) (n:int) =
+let rec nth_string (lst:string list) (n:int) : string option =
   match lst with
   | [] -> None
   | head :: tail ->
@@ -290,7 +290,7 @@ let () = Printf.printf "%d\n" count
 
 *)
 
-let rec count_string_instances (lst:string list) (s:string) =
+let rec count_string_instances (lst:string list) (s:string) : int =
   match lst with
   | [] -> 0
   | head::tail ->
@@ -314,7 +314,7 @@ let () = print_endline (nth_slice 3 "This is a test" ' ')
 
 *)
 
-let nth_slice (n:int) (s:string) (c:char) =
+let nth_slice (n:int) (s:string) (c:char) : string =
   let words = String.split_on_char c s in
   if n < List.length words then
     List.nth words n
@@ -338,7 +338,8 @@ let test2 = is_digit 'a'
 let () = Printf.printf "%b %b %b\n" test0 test1 test2
 
 *)
-let is_digit (c:char) = Char.code c >= 48 && Char.code c <= 57
+let is_digit (c:char) : bool =
+  Char.code c >= 48 && Char.code c <= 57
 
 (*
 
@@ -358,7 +359,8 @@ let () = Printf.printf "%b %b %b\n" test0 test1 test2
 
 *)
 
-let is_lower_case (c:char) = Char.code c >= 97 && Char.code c <= 122
+let is_lower_case (c:char) : bool =
+  Char.code c >= 97 && Char.code c <= 122
 
 (*
 
@@ -378,7 +380,8 @@ let () = Printf.printf "%b %b %b\n" test0 test1 test2
 
 *)
 
-let is_upper_case (c:char) = Char.code c >= 65 && Char.code c <= 90
+let is_upper_case (c:char) : bool =
+  Char.code c >= 65 && Char.code c <= 90
 
 (*
 
@@ -400,7 +403,7 @@ let () = print_int_option(to_int "69")
 
 *)
 
-let to_int (s:string) =
+let to_int (s:string) : int option =
   try Some (int_of_string s)
   with Failure _ -> None
 
@@ -421,7 +424,7 @@ let () = Printf.printf "%b %b\n" test0 test1
 
 *)
 
-let is_int (s:string) = 
+let is_int (s:string) : bool = 
   let x = to_int s in
   match x with
   | None -> false
@@ -447,7 +450,7 @@ let () = print_float_option(to_float "69")
 
 *)
 
-let to_float (s:string) =
+let to_float (s:string) : float option =
   try Some (float_of_string s)
   with Failure _ -> None
 
@@ -468,7 +471,7 @@ let () = Printf.printf "%b %b\n" test0 test1
 
 *)
 
-let is_float (s:string) = 
+let is_float (s:string) : bool = 
   let x = to_float s in
   match x with
   | None -> false
@@ -489,7 +492,7 @@ let () = Printf.printf "%d\n" test
 
 *)
 
-let slice_count (s:string) (delim:char) =
+let slice_count (s:string) (delim:char) : int =
   let rec count_words acc = function
     | [] -> acc
     | "" :: tail -> count_words acc tail
@@ -512,4 +515,5 @@ let () = print_list people
 
 *)
 
-let print_list (lst:string list) = List.iter (fun str -> print_endline str) lst
+let print_list (lst:string list) : unit = 
+  List.iter (fun str -> print_endline str) lst
