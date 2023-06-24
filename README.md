@@ -67,9 +67,17 @@ Dune Run (dr)
 alias dr='dune exec ./bin/main.exe'
 ```
 
+## OCaml Syntax Primer
+
+The OCaml entry on [Learn X in Y Minutes](https://learnxinyminutes.com/docs/ocaml/) is very good.
+
+## Book Recommendation
+
+The praise for [Real World OCaml](https://dev.realworldocaml.org/) is well-deserved.
+
 ## YouTube Tutorials
 
-I highly recommend Michael Ryan Clarkson's extensive [OCaml Programming](https://youtube.com/playlist?list=PLre5AT9JnKShBOPeuiD9b-I4XROIJhkIU) playlist.
+I recommend Michael Ryan Clarkson's extensive [OCaml Programming](https://youtube.com/playlist?list=PLre5AT9JnKShBOPeuiD9b-I4XROIJhkIU) playlist.
 
 ## Chat-GPT Code Generation
 
