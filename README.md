@@ -85,7 +85,7 @@ LLMs are only effective for me because I don't trust their output.
 
 I always test the code that they generate!
 
-However, given that OCaml is an old language that is fairly popular in academia, there is a suprising ammount of training data for them to work with.
+However, given that OCaml is an old language that is fairly popular in academia, there is a suprising amount of training data for them to work with.
 
 I have had the best results with prompts using the following template
 
