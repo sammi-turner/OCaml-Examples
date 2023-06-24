@@ -94,7 +94,9 @@ I have had the best results with prompts using the following template
 and returns a [type] such that [describe what the function does]."
 ```
 
-The less code code generated, the more likely it is to be correct.
+LLMs are also good at providing simple examples of specific syntax features, keywords, or concepts in OCaml.
+
+As a general rule of thumb, the less code there is in the output, the more likely it is to be correct.
 
 If attempting to compile the code generates syntax errors, copy the first reported error and feed it back to Chat-GPT as part of the conversation in this format
 
