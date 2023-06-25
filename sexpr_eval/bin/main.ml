@@ -5,8 +5,8 @@ S-EXPRESSION EVALUATOR
 This program has four parts.
 
 1. A lexer, which takes a string and outputs a list of tokens.
-2. A parser, which checks to see if the token stream is grammatical.
-3. An evaluator, which takes a token stream as input and outputs a string representing a float or int.
+2. A parser, which checks to see if a token stream is grammatical.
+3. An evaluator, which takes a token stream as input and outputs a string representing a float, an int, or an error message.
 4. A REPL (read-evaluate-print-loop) that allows the user to enter expressions and have them evaluated.
 
 *)
