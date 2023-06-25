@@ -79,39 +79,25 @@ The praise for [Real World OCaml](https://dev.realworldocaml.org/) is well-deser
 
 I recommend Michael Ryan Clarkson's extensive [OCaml Programming](https://youtube.com/playlist?list=PLre5AT9JnKShBOPeuiD9b-I4XROIJhkIU) playlist.
 
-## Chat-GPT Code Generation
+## AI Code Generation
 
-LLMs are only effective for me because I don't trust their output.
+Large Language Models (LLMs) are only effective for me because I don't trust their output.
 
 I always test the code that they generate!
 
 However, given that OCaml is an old language that is fairly popular in academia, there is a suprising amount of training data for them to work with.
 
-I have had the best results with prompts using the following template
+## Function Generation With LLMs
+
+I have had the best results with prompts using the following Chat-GPT4 template
 
 ```
 "Write a [name] function in OCaml that takes [name the parameters and their types] 
 and returns a [type] such that [describe what the function does]."
 ```
 
-LLMs are also good at providing simple examples of specific syntax features, keywords, or concepts in OCaml.
+## Example of Program Generation with Chat-GPT4
 
-As a general rule of thumb, the less code there is in the output, the more likely it is to be correct.
+I wrote a lexer for parsing s-expressions and had the following [lengthy conversation with Chat-GPT](https://chat.openai.com/c/b0a5a938-156b-4017-ba73-2329da1a10a2) about how to turn the lexer into a parser, then an evaluator and finally a REPL.
 
-If attempting to compile the code generates syntax errors, copy the first reported error and feed it back to Chat-GPT as part of the conversation in this format
-
-```
-That code gives me the following error : [paste error message here]
-```
-
-Repeat this process until either the code compiles, or the LLM keeps repeating the same mistake.
-
-In the event of repetitive mistakes from Chat-GPT, press the "regenerate response" button.
-
-If the generated code compiles, but the generated function does not behave as expected, try the following steps in order.
-
-```
-1. Check the wording of the problem statement. Should it be reworded?
-2. Are there any subtle errors in the code, which you can correct manually?
-3. Press the "regenerate response" button.
-```
+Along the way, the LLM made errors, but by pointing them out, it was able to self-correct and arrive at a solution.
