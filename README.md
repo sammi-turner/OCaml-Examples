@@ -89,7 +89,7 @@ However, given that OCaml is an old language that is fairly popular in academia,
 
 ## Function Generation With LLMs
 
-I have had the best results with prompts using the following Chat-GPT4 template
+I have had good results with prompts using the following Chat-GPT4 template
 
 ```
 "Write a [name] function in OCaml that takes [name the parameters and their types] 
@@ -100,4 +100,4 @@ and returns a [type] such that [describe what the function does]."
 
 I wrote a lexer for parsing s-expressions and had the following [lengthy conversation with Chat-GPT](https://chat.openai.com/c/b0a5a938-156b-4017-ba73-2329da1a10a2) about how to turn the lexer into a parser, then an evaluator and finally a REPL.
 
-Along the way, the LLM made errors, but by pointing them out, it was able to self-correct and arrive at a solution.
+Along the way, the LLM made errors, but when I pointed them out, it was able to self-correct and arrive at a solution.
