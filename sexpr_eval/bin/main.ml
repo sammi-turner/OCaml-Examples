@@ -11,10 +11,10 @@ This program is divided into three parts.
 COMPLETED
 
 - Lexer
+- Parser
 
 TO DOs
 
-- Parser
 - Evaluator
 
 *)
@@ -74,41 +74,64 @@ let token_stream (s:string) : token list =
   in
   tokenize r
 
-let is_open (lst:token list) : bool  = 
-  match lst with
-  | Lparen :: _ -> true
-  | _ -> false
+type expr =
+  | IntNode of int
+  | FloatNode of float
+  | PlusNode of expr * expr
+  | MinusNode of expr * expr
+  | MultiplyNode of expr * expr
+  | DivideNode of expr * expr
 
-let is_closed (lst:token list) : bool =
-  let s = List.nth lst (List.length lst - 1) in
-  match s with
-  | Rparen -> true
-  | _ -> false
-
-let is_enclosed (lst:token list) : bool =
-  is_open lst && is_closed lst
-
-let print_token token =
-  match token with
-  | Int i -> Printf.printf "Int: %d\n" i
-  | Float f -> Printf.printf "Float: %f\n" f
-  | Plus -> print_endline ("Plus")
-  | Minus -> print_endline ("Minus")
-  | Multiply -> print_endline ("Multiply")
-  | Divide -> print_endline ("Divide")
-  | Lparen -> print_endline ("Lparen")
-  | Rparen -> print_endline ("Rparen")
-  | _ -> print_endline ("Error")
-
-let rec print_token_list tokens =
+let rec parse_expr (tokens: token list) : expr * token list =
   match tokens with
-  | [] -> ()
-  | token :: rest ->
-      print_token token;
-      print_token_list rest
+  | Lparen :: Plus :: rest ->
+      let left, after_left = parse_expr rest in
+      let right, after_right = parse_expr after_left in
+      begin match after_right with
+      | Rparen :: after -> PlusNode (left, right), after
+      | _ -> failwith "unbalanced parentheses"
+      end
+  | Lparen :: Minus :: rest ->
+      let left, after_left = parse_expr rest in
+      let right, after_right = parse_expr after_left in
+      begin match after_right with
+      | Rparen :: after -> MinusNode (left, right), after
+      | _ -> failwith "unbalanced parentheses"
+      end
+  | Lparen :: Multiply :: rest ->
+      let left, after_left = parse_expr rest in
+      let right, after_right = parse_expr after_left in
+      begin match after_right with
+      | Rparen :: after -> MultiplyNode (left, right), after
+      | _ -> failwith "unbalanced parentheses"
+      end
+  | Lparen :: Divide :: rest ->
+      let left, after_left = parse_expr rest in
+      let right, after_right = parse_expr after_left in
+      begin match after_right with
+      | Rparen :: after -> DivideNode (left, right), after
+      | _ -> failwith "unbalanced parentheses"
+      end
+  | Int i :: rest -> IntNode i, rest
+  | Float f :: rest -> FloatNode f, rest
+  | _ -> failwith "parse error"
 
-let test0 = token_stream "(* (+ 2 3.5) 7)"
-let test1 = is_enclosed test0
+let run_test expr_str expected =
+  let tokens = token_stream expr_str in
+  let result, rest = parse_expr tokens in
+  if result = expected && rest = [] then
+    print_endline "Test passed"
+  else
+    print_endline ("Test failed: " ^ expr_str)
 
-let () = Printf.printf "Token stream enclosed? %b\n\n" test1
-let () = print_token_list test0
+let () =
+  run_test "(+ 1 2)"
+    (PlusNode (IntNode 1, IntNode 2));
+
+  run_test "(* 3.5 2.5)"
+    (MultiplyNode (FloatNode 3.5, FloatNode 2.5));
+
+  run_test "(- (/ 10 2) (* 2 2))"
+    (MinusNode (DivideNode (IntNode 10, IntNode 2), MultiplyNode (IntNode 2, IntNode 2)));
+  
+  
