@@ -108,30 +108,6 @@ let rec parse_expr (tokens: token list) : expr * token list =
   | Float f :: rest -> FloatNode f, rest
   | _ -> failwith "parse error"
 
-(* 
-
-TEST CODE FOR THE PARSER
-
-let run_test expr_str expected =
-  let tokens = token_stream expr_str in
-  let result, rest = parse_expr tokens in
-  if result = expected && rest = [] then
-    print_endline "Test passed"
-  else
-    print_endline ("Test failed: " ^ expr_str)
-
-let () =
-  run_test "(+ 1 2)"
-    (PlusNode (IntNode 1, IntNode 2));
-
-  run_test "(* 3.5 2.5)"
-    (MultiplyNode (FloatNode 3.5, FloatNode 2.5));
-
-  run_test "(- (/ 10 2) (* 2 2))"
-    (MinusNode (DivideNode (IntNode 10, IntNode 2), MultiplyNode (IntNode 2, IntNode 2))); 
-    
-*)
-  
 let rec eval_expr (e: expr) : string option =
   match e with
   | IntNode i -> Some (string_of_int i)
@@ -182,28 +158,6 @@ let evaluate (s: string) : string =
           | None -> "Error: Division by zero")
     | _ -> "Error: Invalid expression"
   with Failure _ -> "Error: Parsing error"
-
-(* 
-
-TEST CODE FOR THE EVALUATOR
-
-let run_eval_test expr_str expected =
-  let result = evaluate expr_str in
-  if result = expected then
-    print_endline ("Test passed: " ^ expr_str)
-  else
-    print_endline ("Test failed: " ^ expr_str ^ ", got: " ^ result ^ ", expected: " ^ expected)
-
-let () =
-  run_eval_test "(+ 1 2)" "3";
-  run_eval_test "(* 3.5 2.5)" "8.75";
-  run_eval_test "(- (/ 10 2) (* 2 2))" "1";
-  run_eval_test "(/ 1 0)" "Error: Division by zero";
-  run_eval_test "(+ 1 (+ 2 3))" "6";
-  run_eval_test "(+ 1" "Error: Invalid expression";
-  run_eval_test "(+ 1 ())" "Error: Invalid expression"; 
-  
-*)
   
 let repl () =
   let rec loop () =
@@ -217,7 +171,6 @@ let repl () =
       loop ()
   in loop ()
 
-(* Run the REPL *)
 let () = 
   print_endline "\nS-EXPRESSION EVALUATOR REPL\n";
   print_endline "Please enter valid nested s-expressions of the form : (operator expression expression)";
