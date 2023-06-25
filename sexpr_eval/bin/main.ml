@@ -9,6 +9,7 @@ This program has four parts.
 3. An evaluator, which takes a token stream as input and outputs a string representing a float, an int, or an error message.
 4. A REPL (read-evaluate-print-loop) that allows the user to enter expressions and have them evaluated.
 
+Part 1 of this program was written by a human (me), but the remaining three parts were created with a lengthy conversation I had with Chat-GPT4 : https://chat.openai.com/c/b0a5a938-156b-4017-ba73-2329da1a10a2
 *)
 
 type token =
