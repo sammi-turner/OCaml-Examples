@@ -16,7 +16,7 @@ int_rac 125348 300 has a progression of 300, 358, 354 so our function should ret
 
 *)
 
-let int_rac (n:int) (guess:int) =
+let int_rac (n:int) (guess:int) : int =
   let rec aux n x c = 
     let e = 1 in 
     let new_x = (x + n / x) / 2 in 
@@ -28,6 +28,6 @@ let int_rac (n:int) (guess:int) =
   aux n guess 1
 
 let test0 = int_rac 25 1
-let test1 = int_rac 125348 300
+let test1 = int_rac 125348 300;;
 
-let () = Printf.printf "%d %d\n" test0 test1
+Printf.printf "%d %d\n" test0 test1
