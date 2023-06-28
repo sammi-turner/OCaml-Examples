@@ -24,5 +24,6 @@ let evaporator (content:float) (evap_per_day:float) (threshold:float): int =
   in
   helper content 0
 
-let test = evaporator 10.0 10.0 5.0
-let () = Printf.printf "%d\n" test
+let test = evaporator 10.0 10.0 5.0;;
+
+Printf.printf "%d\n" test
