@@ -8,9 +8,8 @@ Example:
 
 open Utils
 
-let () =
-  let s = user_input "Hello, what is your name? " in
-  Printf.printf "Nice to meet you %s!\n" s
+let s = user_input "Hello, what is your name? ";;
+Printf.printf "Nice to meet you %s!\n" s
 
 *)
 
@@ -41,10 +40,10 @@ The shell function flushes stdout and then executes its string argument as a she
 
 Unix example:
 
-open Utils
+open Utils;;
 
-let () = print_endline "The files in the working directory are:"
-let () = shell "ls -1"
+print_endline "The files in the working directory are:";
+shell "ls -1"
 
 *)
 
@@ -62,14 +61,13 @@ Example:
 
 open Utils
 
-let print_file_contents (x:string option) =
+let print_file_contents (x:string option) : unit =
   match x with
-  | Some x -> Printf.printf "%s\n" x
+  | Some x -> Printf.printf "File contents : %s\n" x
   | None -> Printf.printf "That file does not exist in the working directory.\n"
 
-let file = "example.txt"
-let content = read_file file
-let () = print_file_contents content
+let content = read_file "example.txt";;
+print_file_contents content
 
 *)
 
@@ -90,11 +88,9 @@ The write_file function writes a string to a particular file, or overwrites it, 
 
 Example:
 
-open Utils
+open Utils;;
 
-let file = "example.txt"
-let message = "Oh, hi Mark!"
-let () = write_file file message
+write_file "example.txt" "Oh, hi Mark!"
 
 *)
 
@@ -111,11 +107,9 @@ The append_to_file function either appends a string to a file, or writes to the 
 
 Example:
 
-open Utils
+open Utils;;
 
-let file = "example.txt"
-let message = "add this text to the end."
-let () = append_to_file file message
+append_to_file "example.txt" "Oh, hi Mark!"
 
 *)
 
@@ -136,9 +130,9 @@ open Utils
 
 let die0 = (pseudo 6) + 1
 let die1 = (pseudo 6) + 1
-let die2 = (pseudo 6) + 1
+let die2 = (pseudo 6) + 1;;
 
-let () = Printf.printf "%d %d %d\n" die0 die1 die2
+Printf.printf "%d %d %d\n" die0 die1 die2
 
 *)
 
@@ -158,8 +152,8 @@ Example:
 
 open Utils
 
-let test = slices_to_string ["You're";"tearing";"me";"apart";"Lisa!"] ' '
-let () = print_endline test
+let test = slices_to_string ["You're";"tearing";"me";"apart";"Lisa!"] ' ';;
+print_endline test
 
 *)
 
@@ -180,8 +174,8 @@ The remove_empty_strings function returns the non-empty strings from a list.
 open Utils
 
 let test = ["hello";"";"doggie";"";""]
-let non_empty_strings = remove_empty_strings test
-let () = print_words non_empty_strings
+let non_empty_strings = remove_empty_strings test;;
+print_list non_empty_strings
 
 *)
 
@@ -206,8 +200,8 @@ let print_char_option (x:char option) =
   | Some x -> Printf.printf "%c\n" x
   | None -> Printf.printf "error\n"
 
-let test = nth_char "OCaml" 2
-let () = print_char_option test
+let test = nth_char "OCaml" 2;;
+print_char_option test
 
 *)
 
@@ -225,8 +219,8 @@ Example:
 
 open Utils
 
-let char_count = count_char_instances "What a story Mark" 'a'
-let () = Printf.printf "%i\n" char_count
+let char_count = count_char_instances "What a story Mark" 'a';;
+Printf.printf "%i\n" char_count
 
 *)
 
@@ -258,12 +252,12 @@ let people = ["Mark";"Lisa";"Johnny"]
 let person0 = nth_string people 0
 let person1 = nth_string people 1
 let person2 = nth_string people 2
-let person3 = nth_string people 3
+let person3 = nth_string people 3;;
 
-let () = print_string_option person0
-let () = print_string_option person1
-let () = print_string_option person2
-let () = print_string_option person3
+print_string_option person0;
+print_string_option person1;
+print_string_option person2;
+print_string_option person3
 
 *)
 
@@ -285,8 +279,8 @@ Example:
 open Utils
 
 let lst = ["Oh";"Denny";"Denny";"Denny";"boy"]
-let count = count_string_instances lst "Denny"
-let () = Printf.printf "%d\n" count
+let count = count_string_instances lst "Denny";;
+Printf.printf "%d\n" count
 
 *)
 
@@ -308,9 +302,9 @@ The nth_slice function returns either an empty string or a slice from the argume
 
 Example:
 
-open Utils
+open Utils;;
 
-let () = print_endline (nth_slice 3 "This is a test" ' ')
+print_endline (nth_slice 3 "This is a test" ' ')
 
 *)
 
@@ -333,9 +327,9 @@ open Utils
 
 let test0 = is_digit '0'
 let test1 = is_digit '9'
-let test2 = is_digit 'a'
+let test2 = is_digit 'a';;
 
-let () = Printf.printf "%b %b %b\n" test0 test1 test2
+Printf.printf "%b %b %b\n" test0 test1 test2
 
 *)
 let is_digit (c:char) : bool =
@@ -393,13 +387,13 @@ Example:
 
 open Utils
 
-let print_int_option =
+let print_int_option (x:int option) =
   match x with
   | Some x -> Printf.printf "%d\n" x
-  | None -> Printf.printf "error\n"
+  | None -> Printf.printf "error\n";;
 
-let () = print_int_option(to_int "420.69")
-let () = print_int_option(to_int "69")
+print_int_option(to_int "420.69");
+print_int_option(to_int "69")
 
 *)
 
@@ -418,9 +412,9 @@ Example:
 open Utils
 
 let test0 = is_int "abc"
-let test1 = is_int "42"
+let test1 = is_int "42";;
 
-let () = Printf.printf "%b %b\n" test0 test1
+Printf.printf "%b %b\n" test0 test1
 
 *)
 
@@ -440,13 +434,13 @@ Example:
 
 open Utils
 
-let print_float_option =
+let print_float_option (x:float option) =
   match x with
   | Some x -> Printf.printf "%f\n" x
-  | None -> Printf.printf "error\n"
+  | None -> Printf.printf "error\n";;
 
-let () = print_float_option(to_float "420.69")
-let () = print_float_option(to_float "69")
+print_float_option(to_float "420.69");
+print_float_option(to_float "69")
 
 *)
 
@@ -465,9 +459,9 @@ Example:
 open Utils
 
 let test0 = is_float "abc"
-let test1 = is_float "69.420"
+let test1 = is_float "69.420";;
 
-let () = Printf.printf "%b %b\n" test0 test1
+Printf.printf "%b %b\n" test0 test1
 
 *)
 
@@ -485,10 +479,9 @@ The slice_count function returns the number of slices in a string, as delmited b
 
 Example:
 
-open Utils
+open Utils;;
 
-let test = slice_count "You're,tearing,me,apart,Lisa!"
-let () = Printf.printf "%d\n" test
+Printf.printf "%i\n" (slice_count "You're,tearing,me,apart,Lisa!" ',')
 
 *)
 
@@ -510,8 +503,8 @@ Example:
 
 open Utils
 
-let people = ["Mark";"Lisa";"Johnny"]
-let () = print_list people
+let people = ["Mark";"Lisa";"Johnny"];;
+print_list people
 
 *)
 
