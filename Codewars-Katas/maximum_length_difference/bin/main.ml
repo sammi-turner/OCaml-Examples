@@ -28,8 +28,11 @@ let mxdiflg (a : string array) (b : string array) : int option =
 let a1 = [|"hoqq";"bbllkw";"oox";"ejjuyyy";"plmiis";"xxxzgpsssa";"xxwwkktt";"znnnnfqknaz";"qqquuhii";"dvvvwz"|]
 let a2 = [|"cccooommaaqqoxii";"gggqaffhhh";"tttoowwwmmww"|]
 
-let num = mxdiflg (a1:string array) (a2:string array)
-let () =
+let num = mxdiflg a1 a2
+
+let ans =
   match num with
-  | None -> print_endline "There wasn't a max value!"
-  | Some num -> Printf.printf "%d\n" num
+  | None -> "There wasn't a max value!"
+  | Some num -> string_of_int num;;
+
+Printf.printf "%s\n" ans
