@@ -12,12 +12,12 @@ Example:
 
 *)
 
-let rec summation (n:int) =
+let rec summation (n:int) : int =
   if n <= 0 then 0
   else n + summation (n - 1)
 
 let test0 = summation 2
 let test1 = summation 3
-let test2 = summation 8
+let test2 = summation 8;;
 
-let () = Printf.printf "%d\n%d\n%d\n" test0 test1 test2
+Printf.printf "%d\n%d\n%d\n" test0 test1 test2
