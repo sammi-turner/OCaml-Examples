@@ -14,12 +14,12 @@ n = 3, so I expect a 3x3 square back just like below as a string.
 
 *)
 
-let generate_shape (n: int) =
+let generate_shape (n: int) : string =
   List.init n (fun _ -> String.make n '+')
   |> String.concat "\n"
 
 let test0 = generate_shape 5
 let test1 = generate_shape 3
-let test2 = generate_shape 1
+let test2 = generate_shape 1;;
 
-let () = Printf.printf "%s\n%s\n%s\n" test0 test1 test2
+Printf.printf "%s\n%s\n%s\n" test0 test1 test2
