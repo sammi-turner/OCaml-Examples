@@ -13,7 +13,7 @@ is_palindrome "wow" => true
 
 *)
 
-let is_palindrome (s:string) =
+let is_palindrome (s:string) : bool =
   let len = String.length s in
   let lower = String.lowercase_ascii s in
   let rec loop i =
@@ -25,6 +25,6 @@ let is_palindrome (s:string) =
 
 let test0 = is_palindrome "Abba"
 let test1 = is_palindrome "Hello"
-let test2 = is_palindrome "wow"
+let test2 = is_palindrome "wow";;
 
-let () = Printf.printf "%b\n%b\n%b\n" test0 test1 test2
+Printf.printf "%b\n%b\n%b\n" test0 test1 test2
