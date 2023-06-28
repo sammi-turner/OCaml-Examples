@@ -18,6 +18,6 @@ let l2 = [7; 7]
 
 let r0 = grow l0
 let r1 = grow l1
-let r2 = grow l2
+let r2 = grow l2;;
 
-let () = Printf.printf("%d\n%d\n%d\n") r0 r1 r2
+Printf.printf("%d\n%d\n%d\n") r0 r1 r2
