@@ -14,10 +14,11 @@ Note that base is a non-negative number and factor is a positive number.
 
 *)
 
-let check_for_factor (base: int) (factor: int) = (base mod factor) == 0
+let check_for_factor (base: int) (factor: int) : bool = 
+  (base mod factor) == 0
 
 let test0 = check_for_factor 10 2
 let test1 = check_for_factor 63 7
-let test2 = check_for_factor 9 2
+let test2 = check_for_factor 9 2;;
 
-let () = Printf.printf "%b\n%b\n%b\n" test0 test1 test2
+Printf.printf "%b\n%b\n%b\n" test0 test1 test2
