@@ -347,9 +347,9 @@ open Utils
 
 let test0 = is_lower_case 'a'
 let test1 = is_lower_case 'A'
-let test2 = is_lower_case ' '
+let test2 = is_lower_case ' ';;
 
-let () = Printf.printf "%b %b %b\n" test0 test1 test2
+Printf.printf "%b %b %b\n" test0 test1 test2
 
 *)
 
@@ -368,9 +368,9 @@ open Utils
 
 let test0 = is_upper_case 'a'
 let test1 = is_upper_case 'A'
-let test2 = is_upper_case ' '
+let test2 = is_upper_case ' ';;
 
-let () = Printf.printf "%b %b %b\n" test0 test1 test2
+Printf.printf "%b %b %b\n" test0 test1 test2
 
 *)
 
