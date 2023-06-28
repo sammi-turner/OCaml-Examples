@@ -11,7 +11,7 @@ This program has four parts.
 
 Part 1 of this program was written by a human (me).
 
-The rest of it was created from a conversation I had with Chat-GPT4 : https://chat.openai.com/share/a11e1f50-dce6-4e11-b351-9b4c02d52443
+The rest of it was created from a conversation I had with Chat-GPT4 : https://chat.openai.com/c/b0a5a938-156b-4017-ba73-2329da1a10a2
 
 *)
 
@@ -173,11 +173,10 @@ let repl () =
       let result = evaluate line in
       print_endline result;
       loop ()
-  in loop ()
+  in loop ();;
 
-let () = 
-  print_endline "\nS-EXPRESSION EVALUATOR REPL\n";
-  print_endline "Please enter valid nested s-expressions of the form : (operator expression expression)";
-  print_endline "The operators recognised are : +, -, * and /";
-  print_endline "Enter a blank input to exit the program";
-  repl ();
+print_endline "\nS-EXPRESSION EVALUATOR REPL\n";
+print_endline "Please enter valid nested s-expressions of the form : (operator expression expression)";
+print_endline "The operators recognised are : +, -, * and /";
+print_endline "Enter a blank input to exit the program";
+repl ()
