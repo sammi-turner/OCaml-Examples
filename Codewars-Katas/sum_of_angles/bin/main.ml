@@ -12,10 +12,11 @@ Examples:
 
 *)
 
-let angle (n:int) = (n - 2) * 180
+let angle (n:int) : int = 
+  (n - 2) * 180
 
 let test3 = angle 3
 let test4 = angle 4
-let test5 = angle 5
+let test5 = angle 5;;
 
-let () = Printf.printf "%d %d %d\n" test3 test4 test5
+Printf.printf "%d %d %d\n" test3 test4 test5
