@@ -12,7 +12,7 @@ Examples:
 
 *)
 
-let abbrev_name (name:string) =
+let abbrev_name (name:string) : string =
   match String.split_on_char ' ' name with
   | [first_name; last_name] ->
     let first_initial = String.sub first_name 0 1 |> String.uppercase_ascii in
@@ -22,6 +22,6 @@ let abbrev_name (name:string) =
 
 let test0 = abbrev_name "Joe Bloggs"
 let test1 = abbrev_name "Jane Smith"
-let test2 = abbrev_name "Tim Cook"
+let test2 = abbrev_name "Tim Cook";;
 
-let () = Printf.printf "%s\n%s\n%s\n" test0 test1 test2
+Printf.printf "%s\n%s\n%s\n" test0 test1 test2
