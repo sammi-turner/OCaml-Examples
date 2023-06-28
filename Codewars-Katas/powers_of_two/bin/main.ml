@@ -11,15 +11,16 @@ n = 2  ==> [1, 2, 4]
 
 *)
 
-let powersOfTwo (n:int) = List.init (n + 1) ((lsl) 1)
+let powersOfTwo (n:int) : int list = 
+  List.init (n + 1) ((lsl) 1)
 
 let a = powersOfTwo 0
 let b = powersOfTwo 1
-let c = powersOfTwo 2
+let c = powersOfTwo 2;;
 
-let () = List.iter (Printf.printf "%d ") a
-let () = print_endline("")
-let () = List.iter (Printf.printf "%d ") b
-let () = print_endline("")
-let () = List.iter (Printf.printf "%d ") c
-let () = print_endline("")
+List.iter (Printf.printf "%d ") a;;
+print_endline("");;
+List.iter (Printf.printf "%d ") b;;
+print_endline("");;
+List.iter (Printf.printf "%d ") c;;
+print_endline("");;
