@@ -5,9 +5,9 @@ type bank_account = {
 }
 
 (* Function to create a new bank account *)
-let create_account (name:string) (initial_balance:float) : bank_account = {
+let create_account (name:string) (balance:float) : bank_account = {
   name; 
-  balance = initial_balance 
+  balance;
 }
 
 (* Function to deposit into a bank account *)
@@ -21,13 +21,9 @@ let withdraw (account:bank_account) (amount:float) : unit =
   else 
     account.balance <- account.balance -. amount
 
-(* Function to get the current balance of a bank account *)
-let get_balance (account:bank_account) : float = 
-  account.balance
-
 (* Function to print the current balance of a bank account *)
 let print_balance (account:bank_account) : unit = 
-  print_string ("Balance of " ^ account.name ^ ": " ^ string_of_float (get_balance account) ^ "\n")
+  print_string ("Balance of " ^ account.name ^ ": " ^ string_of_float account.balance ^ "\n")
 
 let account = create_account "John Doe" 1000.0;;
 deposit account 500.0;
