@@ -1,0 +1,4 @@
+(executable
+ (public_name http_server)
+ (name main)
+ (libraries http_server unix threads))
