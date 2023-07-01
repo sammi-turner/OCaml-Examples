@@ -71,13 +71,13 @@ alias dr='dune exec ./bin/main.exe'
 
 The OCaml entry on [Learn X in Y Minutes](https://learnxinyminutes.com/docs/ocaml/) is very good.
 
-## Book Recommendation
+## Language Overview
 
-The praise for [Real World OCaml](https://dev.realworldocaml.org/) is well-deserved.
+The Read World OCaml site has a great [Guided Tour](https://dev.realworldocaml.org/).
 
 ## YouTube Tutorials
 
-I recommend Michael Ryan Clarkson's extensive [OCaml Programming](https://youtube.com/playlist?list=PLre5AT9JnKShBOPeuiD9b-I4XROIJhkIU) playlist.
+For video tutorials, I recommend Michael Ryan Clarkson's extensive [OCaml Programming](https://youtube.com/playlist?list=PLre5AT9JnKShBOPeuiD9b-I4XROIJhkIU) playlist.
 
 ## AI Code Generation
 
