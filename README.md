@@ -73,7 +73,7 @@ The OCaml entry on [Learn X in Y Minutes](https://learnxinyminutes.com/docs/ocam
 
 ## Language Overview
 
-The Read World OCaml site has a great [Guided Tour](https://dev.realworldocaml.org/).
+The Read World OCaml site has a great [Guided Tour](https://dev.realworldocaml.org/guided-tour.html).
 
 ## YouTube Tutorials
 
