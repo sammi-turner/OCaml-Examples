@@ -119,6 +119,27 @@ let append_to_file (name:string) (content:string) : unit =
   close_out channel
 
 (*
+   
+DELETE FILE
+
+The delete_file function attempts to delete a file from the working directory.
+
+Example:
+
+open Utils;;
+
+let result = delete_file "example.txt";
+Printf.printf "%b\n" result
+
+*)
+
+let delete_file (name:string) : unit = 
+  try 
+    Sys.remove name
+  with
+  | Sys_error _ -> ()
+
+(*
 
 PSEUDO
 
