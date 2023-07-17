@@ -128,8 +128,7 @@ Example:
 
 open Utils;;
 
-let result = delete_file "example.txt";
-Printf.printf "%b\n" result
+delete_file "example.txt";
 
 *)
 
