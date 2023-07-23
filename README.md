@@ -89,7 +89,7 @@ However, given that OCaml is an old language that is fairly popular in academia,
 
 ## Function Generation With LLMs
 
-I have had good results with prompts using the following Chat-GPT4 template
+I have had good results with prompts using the following template
 
 ```
 "Write a [name] function in OCaml that takes [name the parameters and their types] 
