@@ -1,8 +1,12 @@
 # OCaml Examples
 
+<br>
+
 ## Install Opam
 
 To install opam, follow [these instructions](https://ocaml.org/docs/up-and-running).
+
+<br>
 
 ## Install Dune
 
@@ -12,6 +16,8 @@ When opam has been installed properly, run
 opam install dune
 ```
 
+<br>
+
 ## Check Dune Version
 
 Determine the version of dune you are running with the command
@@ -19,6 +25,8 @@ Determine the version of dune you are running with the command
 ```
 dune --version
 ```
+
+<br>
 
 ## Quiet output
 
@@ -37,6 +45,8 @@ Add the following code to the file, replacing 3.7 with the version number that y
 (display quiet)
 ```
 
+<br>
+
 ## Useful shell function
 
 Dune New Project (dnp)
@@ -46,6 +56,8 @@ dnp() {
   dune init project $1 && cd $1 && dune build
 }
 ```
+
+<br>
 
 ## Useful shell aliases
 
@@ -67,17 +79,25 @@ Dune Run (dr)
 alias dr='dune exec ./bin/main.exe'
 ```
 
+<br>
+
 ## OCaml Syntax Primer
 
 The OCaml entry on [Learn X in Y Minutes](https://learnxinyminutes.com/docs/ocaml/) is very good.
+
+<br>
 
 ## Language Overview
 
 The Read World OCaml site has a great [Guided Tour](https://dev.realworldocaml.org/guided-tour.html).
 
+<br>
+
 ## YouTube Tutorials
 
 For video tutorials, I recommend Michael Ryan Clarkson's extensive [OCaml Programming](https://youtube.com/playlist?list=PLre5AT9JnKShBOPeuiD9b-I4XROIJhkIU) playlist.
+
+<br>
 
 ## AI Code Generation
 
@@ -87,6 +107,8 @@ I always test the code that they generate!
 
 However, given that OCaml is an old language that is fairly popular in academia, there is a suprising amount of training data for them to work with.
 
+<br>
+
 ## Function Generation With LLMs
 
 I have had good results with prompts using the following template
@@ -95,6 +117,8 @@ I have had good results with prompts using the following template
 "Write a [name] function in OCaml that takes [name the parameters and their types] 
 and returns a [type] such that [describe what the function does]."
 ```
+
+<br>
 
 ## Example of Program Generation with Chat-GPT4
 
