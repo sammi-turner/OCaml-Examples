@@ -1,0 +1,4 @@
+(executable
+ (public_name sqlite_todos)
+ (name main)
+ (libraries sqlite3))
