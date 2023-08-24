@@ -1,0 +1,2 @@
+(library
+ (name sqlite_todos))
