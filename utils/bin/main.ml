@@ -1,4 +1,5 @@
-open Utils
+open Utils;;
 
-let people = ["Mark";"Lisa";"Johnny"];;
-print_list people
+print_endline "The files in the working directory are:";
+let s = shell "ls -1" in
+print_endline s

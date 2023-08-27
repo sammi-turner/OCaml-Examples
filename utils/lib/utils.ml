@@ -43,13 +43,22 @@ Unix example:
 open Utils;;
 
 print_endline "The files in the working directory are:";
-shell "ls -1"
+let s = shell "ls -1" in
+print_endline s
 
 *)
 
-let shell (s:string) : unit = 
-  flush stdout;
-  ignore (Sys.command(s))
+let shell (s:string) : string =
+  let tmp_file = "tmp_output.txt" in
+  let command = s ^ " > " ^ tmp_file in
+  let _ = Sys.command command in
+  let ic = open_in tmp_file in
+  let n = in_channel_length ic in
+  let s = Bytes.create n in
+  let _ = really_input ic s 0 n in
+  close_in ic;
+  Sys.remove tmp_file;
+  Bytes.to_string s
 
 (*
    
@@ -128,7 +137,8 @@ Example:
 
 open Utils;;
 
-delete_file "example.txt";
+let result = delete_file "example.txt";
+Printf.printf "%b\n" result
 
 *)
 
