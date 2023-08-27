@@ -83,14 +83,16 @@ alias dr='dune exec ./bin/main.exe'
 
 ## Building with OCamlbuild
 
-Dune creates a complex file structure with lots of configuration files. If you don't need all that, then you can use OCamlbuild instead.
+Dune creates a file structure with lots of config files. 
+
+If you don't need all that, then you can use OCamlbuild instead, but be warned that you may have to disable your current linting tool, or you will get bogus linting errors!
 
 <br>
 
 ### To compile a native binary
 
 ```
-ocamlbuild main.native
+ocamlbuild -use-ocamlfind main.native
 ```
 
 <br>
@@ -106,7 +108,7 @@ ocamlbuild main.native
 ### To compile and run the binary
 
 ```
-ocamlbuild main.native && ./main.native
+ocamlbuild -use-ocamlfind main.native && ./main.native
 ```
 
 <br>
