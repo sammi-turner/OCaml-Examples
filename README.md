@@ -113,19 +113,19 @@ ocamlbuild -use-ocamlfind main.native && ./main.native
 
 <br>
 
-### Can I delete the build folder?
-
-You can delete the build folder, but keeping it will speed up re-compilation a bit.
-
-<br>
-
-### Using OCamlfind to link dependencies
+### Linking dependencies
 
 Replace "your_opam_packages" with the correct dependency names.
 
 ```
 ocamlbuild -use-ocamlfind -pkgs your_opam_packages main.native
 ```
+
+<br>
+
+### Can I delete the build folder?
+
+You can delete the build folder, but keeping it will make re-compilation faster.
 
 <br>
 
