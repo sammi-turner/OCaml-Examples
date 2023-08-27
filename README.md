@@ -8,27 +8,23 @@ To install opam, follow [these instructions](https://ocaml.org/docs/up-and-runni
 
 <br>
 
-## Install Dune
+## Building with Dune
 
-When opam has been installed properly, run
+To install, run
 
 ```
 opam install dune
 ```
 
-<br>
+### Check version
 
-## Check Dune Version
-
-Determine the version of dune you are running with the command
+Determine the version of dune you are running with
 
 ```
 dune --version
 ```
 
-<br>
-
-## Quiet output
+### Quiet output
 
 To prevent build progress reports from being printed before your programs run, create a global dune config file.
 
@@ -45,9 +41,7 @@ Add the following code to the file, replacing 3.7 with the version number that y
 (display quiet)
 ```
 
-<br>
-
-## Useful shell function
+### Useful shell function
 
 Dune New Project (dnp)
 
@@ -57,9 +51,7 @@ dnp() {
 }
 ```
 
-<br>
-
-## Useful shell aliases
+### Useful shell aliases
 
 Dune Compile and Run (dcr)
 
@@ -77,6 +69,42 @@ Dune Run (dr)
 
 ```
 alias dr='dune exec ./bin/main.exe'
+```
+
+<br>
+
+## Building with OCamlbuild
+
+Dune creates a complex file structure with lots of configuration files. If you don't need all that, then you can use OCamlbuild instead.
+
+### To compile a native binary
+
+```
+ocamlbuild main.native
+```
+
+### To run the binary
+
+```
+./main.native
+```
+
+### To compile and run the binary
+
+```
+ocamlbuild main.native && ./main.native
+```
+
+### Can I delete the build folder?
+
+You can delete the build folder, but keeping it will speed up re-compilation a bit.
+
+### Using OCamlfind to link dependencies
+
+Replace "your_opam_packages" with the correct dependency names.
+
+```
+ocamlbuild -use-ocamlfind -pkgs your_opam_packages main.native
 ```
 
 <br>
