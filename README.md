@@ -16,6 +16,8 @@ To install, run
 opam install dune
 ```
 
+<br>
+
 ### Check version
 
 Determine the version of dune you are running with
@@ -23,6 +25,8 @@ Determine the version of dune you are running with
 ```
 dune --version
 ```
+
+<br>
 
 ### Quiet output
 
@@ -41,6 +45,8 @@ Add the following code to the file, replacing 3.7 with the version number that y
 (display quiet)
 ```
 
+<br>
+
 ### Useful shell function
 
 Dune New Project (dnp)
@@ -50,6 +56,8 @@ dnp() {
   dune init project $1 && cd $1 && dune build
 }
 ```
+
+<br>
 
 ### Useful shell aliases
 
@@ -77,11 +85,15 @@ alias dr='dune exec ./bin/main.exe'
 
 Dune creates a complex file structure with lots of configuration files. If you don't need all that, then you can use OCamlbuild instead.
 
+<br>
+
 ### To compile a native binary
 
 ```
 ocamlbuild main.native
 ```
+
+<br>
 
 ### To run the binary
 
@@ -89,15 +101,21 @@ ocamlbuild main.native
 ./main.native
 ```
 
+<br>
+
 ### To compile and run the binary
 
 ```
 ocamlbuild main.native && ./main.native
 ```
 
+<br>
+
 ### Can I delete the build folder?
 
 You can delete the build folder, but keeping it will speed up re-compilation a bit.
+
+<br>
 
 ### Using OCamlfind to link dependencies
 
