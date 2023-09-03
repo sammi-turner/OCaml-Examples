@@ -29,7 +29,7 @@ let query_table () : unit =
   let _ = printf "\n%s\n%s\n%s\n%b\n\n%s\n%s\n%s\n%s\n" v0 v1 v2 v3 v4 v5 v6 v7 in
   ()
 
-  let () =
-  match is_sqlite_installed () with
-  | true -> query_table ()
-  | false -> printf "Sqlite3 is not installed.\n"
+let () =
+match is_sqlite_installed () with
+| true -> query_table ()
+| false -> printf "Sqlite3 is not installed.\n"
