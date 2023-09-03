@@ -1,4 +1,8 @@
+<br>
+
 # OCaml Examples
+
+This repo is designed to get you started with OCaml.
 
 <br>
 
