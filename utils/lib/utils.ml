@@ -362,6 +362,7 @@ let test2 = is_digit 'a';;
 Printf.printf "%b %b %b\n" test0 test1 test2
 
 *)
+
 let is_digit (c:char) : bool =
   Char.code c >= 48 && Char.code c <= 57
 
