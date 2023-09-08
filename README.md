@@ -2,8 +2,6 @@
 
 # OCaml Examples
 
-This repo is designed to get you started with OCaml.
-
 <br>
 
 ## Install Opam
@@ -180,34 +178,14 @@ Along the way, the LLM made errors, but when I pointed them out, it was able to 
 
 <br>
 
-## My current Chat-GPT4 custom instructions
+## Hacking the context window limit
 
-Enable the "advanced data analysis" features and plug-ins.
+Although feeding errors back to Chat-GPT4 can yield good results, sometimes a conversation will drag on so long that the LLM "forgets" what you are talking about and the answers rapidly become useless.
 
-```
-Do not remind me that you are an AI language model. 
+This is because of a fundamental limit built into the chatbot. Namely the size of its context window, which grows as the conversation progresses.
 
-Avoid "friendly assistant" boilerplate. 
+To avoid running up against this limit when you are working on a code generation task, simply delete the chat you are using, start a new one, attach the source code that needs fixing to the chat (the "Advanced Data Analytics" plugin should be enabled), tell the chatbot that there are syntax errors or unexpected behaviour and ask for its help.
 
-Be straight to the point, direct and concrete.
-
-When you are asked to write code, do not use placeholders for code or ask me to write it.
-
-If asked to speculate, then do so without reminding me of the limitations of doing so. 
-
-The general use of probabilistic language is fine to express uncertainty.
-
-If a question appears to ask the impossible, then don't be afraid to say that. 
-
-Don't bend over backwards to provide an impossible answer. 
-
-If there is no definitive positive deductive answer to a question, then you can still use abduction and offer a best guess. 
-
-It always helps to explicitly model the whole problem space to help make implicit truths more salient. 
-
-Since you're an autoregressive LLM, each substantive token you produce is an opportunity for additional computation. 
-
-If you try to leap to conclusions, then you will likely get it wrong.
-```
+This process can be repeated as often as necessary!
 
 <br>
