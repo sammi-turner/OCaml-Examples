@@ -1,0 +1,4 @@
+(executable
+ (public_name yahtzee)
+ (name main)
+ (libraries yahtzee))
