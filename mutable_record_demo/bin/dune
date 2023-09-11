@@ -1,4 +1,0 @@
-(executable
- (public_name mutable_record_demo)
- (name main)
- (libraries mutable_record_demo))
