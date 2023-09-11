@@ -34,31 +34,17 @@ let is_unix () : bool =
 
 (*
 
-SHELL
+CLEAR TERMINAL
 
-The shell function flushes stdout and then executes its string argument as a shell command.
-
-Unix example:
-
-open Utils;;
-
-print_endline "The files in the working directory are:";
-let s = shell "ls -1" in
-print_endline s
+The clear_terminal function wipes the terminal window.
 
 *)
 
-let shell (s:string) : string =
-  let tmp_file = "tmp_output.txt" in
-  let command = s ^ " > " ^ tmp_file in
-  let _ = Sys.command command in
-  let ic = open_in tmp_file in
-  let n = in_channel_length ic in
-  let s = Bytes.create n in
-  let _ = really_input ic s 0 n in
-  close_in ic;
-  Sys.remove tmp_file;
-  Bytes.to_string s
+let clear_terminal () : unit =
+  if Sys.os_type = "Win32" then
+    ignore (Sys.command "cls")
+  else
+    ignore (Sys.command "clear")
 
 (*
    
