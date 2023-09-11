@@ -138,15 +138,15 @@ let delete_file (name:string) : unit =
 
 PSEUDO
 
-The pseudo function returns either 0 or an integer between 0 and n - 1.
+The pseudo function returns either 0 or an integer between 1 and n.
 
 Example:
 
 open Utils
 
-let die0 = (pseudo 6) + 1
-let die1 = (pseudo 6) + 1
-let die2 = (pseudo 6) + 1;;
+let die0 = pseudo 6
+let die1 = pseudo 6
+let die2 = pseudo 6;;
 
 Printf.printf "%d %d %d\n" die0 die1 die2
 
@@ -155,7 +155,7 @@ Printf.printf "%d %d %d\n" die0 die1 die2
 let pseudo (n:int) : int =
   Random.self_init ();
   match n with
-    _ when n > 0 -> Random.int(n)
+    _ when n > 0 -> Random.int(n) + 1
     | _ -> 0
 
 (*
