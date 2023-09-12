@@ -1,7 +1,7 @@
 open Curses
 open Printf
 
-(* Utility functions*)
+(* Utility functions *)
 
 let add (s:string) : unit = 
   ignore (addstr s)
