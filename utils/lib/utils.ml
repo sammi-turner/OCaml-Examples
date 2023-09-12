@@ -1,3 +1,59 @@
+open Printf
+open Curses
+
+(*
+   
+CURSES LIBRARY FUNCTIONS
+
+- The start and finish functions open and close the virtual terminal.
+- The add and show functions work together to display text to the virtual terminal.
+- The cursor_on and cursor_off functions control the visibility of the cursor within the virtual terminal.
+- The vinput function takes input from the user in the virtual terminal up to a maximum length.
+
+Example:
+
+open Utils
+
+let () =
+  start;
+  add "What is your name? ";
+  show;
+  let name = vinput 20 in
+  add "Hello, ";
+  add name;
+  add "! ";
+  show;
+  finish ("\n\nPress any key to close. ");
+
+*)
+
+let add (s:string) : unit = 
+  ignore (addstr s)
+
+let show : unit =
+  ignore (refresh())
+
+let cursor_off : unit =
+  ignore (curs_set(0))
+
+let cursor_on : unit =
+  ignore (curs_set(1))
+
+let start : unit =
+  let win = initscr () in
+  ignore (keypad win true)
+
+let finish (s:string) : unit =
+  add s;
+  show;
+  ignore (getch ());
+  endwin ()
+
+let vinput (n:int) : string =
+  let buffer = String.make n ' ' in
+  ignore (getnstr buffer 0 n);
+  buffer
+
 (* 
 
 USER INPUT
@@ -9,12 +65,12 @@ Example:
 open Utils
 
 let s = user_input "Hello, what is your name? ";;
-Printf.printf "Nice to meet you %s!\n" s
+printf "Nice to meet you %s!\n" s
 
 *)
 
 let user_input (s:string) : string =
-  print_string s;
+  printf "%s " s;
   flush stdout;
   read_line ()
 
@@ -58,8 +114,8 @@ open Utils
 
 let print_file_contents (x:string option) : unit =
   match x with
-  | Some x -> Printf.printf "File contents : %s\n" x
-  | None -> Printf.printf "That file does not exist in the working directory.\n"
+  | Some x -> printf "File contents : %s\n" x
+  | None -> printf "That file does not exist in the working directory.\n"
 
 let content = read_file "example.txt";;
 print_file_contents content
@@ -124,7 +180,7 @@ Example:
 open Utils;;
 
 let result = delete_file "example.txt";
-Printf.printf "%b\n" result
+printf "%b\n" result
 
 *)
 
@@ -148,7 +204,7 @@ let die0 = pseudo 6
 let die1 = pseudo 6
 let die2 = pseudo 6;;
 
-Printf.printf "%d %d %d\n" die0 die1 die2
+printf "%d %d %d\n" die0 die1 die2
 
 *)
 
@@ -183,6 +239,24 @@ let slices_to_string (lst:string list) (ch:char) : string =
 
 (*
    
+PRINT LIST
+
+The print_list function prints out a list of strings with each string on a new line.
+
+Example:
+
+open Utils
+
+let people = ["Mark";"Lisa";"Johnny"];;
+print_list people
+
+*)
+
+let print_list (lst:string list) : unit = 
+  List.iter (fun str -> printf "%s\n" str) lst
+
+(*
+   
 REMOVE EMPTY STRINGS
 
 The remove_empty_strings function returns the non-empty strings from a list. 
@@ -213,8 +287,8 @@ open Utils
 
 let print_char_option (x:char option) =
   match x with
-  | Some x -> Printf.printf "%c\n" x
-  | None -> Printf.printf "error\n"
+  | Some x -> printf "%c\n" x
+  | None -> printf "error\n"
 
 let test = nth_char "OCaml" 2;;
 print_char_option test
@@ -236,7 +310,7 @@ Example:
 open Utils
 
 let char_count = count_char_instances "What a story Mark" 'a';;
-Printf.printf "%i\n" char_count
+printf "%i\n" char_count
 
 *)
 
@@ -260,8 +334,8 @@ open Utils
 
 let print_string_option (x:string option) =
   match x with
-  | Some x -> Printf.printf "%s\n" x
-  | None -> Printf.printf "error\n"
+  | Some x -> printf "%s\n" x
+  | None -> printf "error\n"
 
 let people = ["Mark";"Lisa";"Johnny"]
 
@@ -296,7 +370,7 @@ open Utils
 
 let lst = ["Oh";"Denny";"Denny";"Denny";"boy"]
 let count = count_string_instances lst "Denny";;
-Printf.printf "%d\n" count
+printf "%d\n" count
 
 *)
 
@@ -345,7 +419,7 @@ let test0 = is_digit '0'
 let test1 = is_digit '9'
 let test2 = is_digit 'a';;
 
-Printf.printf "%b %b %b\n" test0 test1 test2
+printf "%b %b %b\n" test0 test1 test2
 
 *)
 
@@ -366,7 +440,7 @@ let test0 = is_lower_case 'a'
 let test1 = is_lower_case 'A'
 let test2 = is_lower_case ' ';;
 
-Printf.printf "%b %b %b\n" test0 test1 test2
+printf "%b %b %b\n" test0 test1 test2
 
 *)
 
@@ -387,7 +461,7 @@ let test0 = is_upper_case 'a'
 let test1 = is_upper_case 'A'
 let test2 = is_upper_case ' ';;
 
-Printf.printf "%b %b %b\n" test0 test1 test2
+printf "%b %b %b\n" test0 test1 test2
 
 *)
 
@@ -406,8 +480,8 @@ open Utils
 
 let print_int_option (x:int option) =
   match x with
-  | Some x -> Printf.printf "%d\n" x
-  | None -> Printf.printf "error\n";;
+  | Some x -> printf "%d\n" x
+  | None -> printf "error\n";;
 
 print_int_option(to_int "420.69");
 print_int_option(to_int "69")
@@ -431,7 +505,7 @@ open Utils
 let test0 = is_int "abc"
 let test1 = is_int "42";;
 
-Printf.printf "%b %b\n" test0 test1
+printf "%b %b\n" test0 test1
 
 *)
 
@@ -453,8 +527,8 @@ open Utils
 
 let print_float_option (x:float option) =
   match x with
-  | Some x -> Printf.printf "%f\n" x
-  | None -> Printf.printf "error\n";;
+  | Some x -> printf "%f\n" x
+  | None -> printf "error\n";;
 
 print_float_option(to_float "420.69");
 print_float_option(to_float "69")
@@ -478,7 +552,7 @@ open Utils
 let test0 = is_float "abc"
 let test1 = is_float "69.420";;
 
-Printf.printf "%b %b\n" test0 test1
+printf "%b %b\n" test0 test1
 
 *)
 
@@ -498,7 +572,7 @@ Example:
 
 open Utils;;
 
-Printf.printf "%i\n" (slice_count "You're,tearing,me,apart,Lisa!" ',')
+printf "%i\n" (slice_count "You're,tearing,me,apart,Lisa!" ',')
 
 *)
 
@@ -510,20 +584,3 @@ let slice_count (s:string) (delim:char) : int =
   in
   s |> String.split_on_char delim |> count_words 0
 
-(*
-   
-PRINT LIST
-
-The print_list function prints out a list of strings with each string on a new line.
-
-Example:
-
-open Utils
-
-let people = ["Mark";"Lisa";"Johnny"];;
-print_list people
-
-*)
-
-let print_list (lst:string list) : unit = 
-  List.iter (fun str -> print_endline str) lst
