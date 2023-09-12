@@ -13,6 +13,9 @@ let start : unit =
   let win = initscr () in
   ignore (keypad win true);;
 
+let cursor_off : unit =
+  ignore (curs_set(0))
+
 let finish (s:string) : unit =
   add s;
   show;
@@ -37,7 +40,7 @@ class game = object(self)
     done
   
   method numeric_input () : int =
-    ignore (curs_set(0));
+    cursor_off;
     let num = getch () in
     (num - 48)
   
