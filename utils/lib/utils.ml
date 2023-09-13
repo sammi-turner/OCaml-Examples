@@ -7,7 +7,6 @@ CURSES LIBRARY FUNCTIONS
 
 - The start and finish functions open and close the virtual terminal.
 - The add and show functions work together to display text to the virtual terminal.
-- The cursor_on and cursor_off functions control the visibility of the cursor within the virtual terminal.
 - The vinput function takes input from the user in the virtual terminal up to a maximum length.
 
 Example:
@@ -32,12 +31,6 @@ let add (s:string) : unit =
 
 let show : unit =
   ignore (refresh())
-
-let cursor_off : unit =
-  ignore (curs_set(0))
-
-let cursor_on : unit =
-  ignore (curs_set(1))
 
 let start : unit =
   let win = initscr () in
