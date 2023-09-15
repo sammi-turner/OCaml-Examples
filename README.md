@@ -89,13 +89,15 @@ Dune creates a file structure with lots of config files.
 
 If you don't need all that, then you can use OCamlbuild instead.
 
+<br>
+
 ## Bogus linting errors
 
-The OCaml Platform vscode extension is configured to Dune rather than OCaml, so using OCamlbuild projects with it will generate bogus linting errors.
+The OCaml Platform extension for VSCode is configured to Dune rather than OCaml, so using OCamlbuild projects with it will generate bogus linting errors.
 
 I don't know if this problem also occurs in terminal-based editors where an OCaml LSP is set up, but I dare say that it might.
 
-One workaround for this is to use VSCodium instead of VSCode, and to install the OCaml Platform Syntax extension rather than the OCaml Platform Extension, but of course, this will only give you OCaml syntax highlighting, not linting or autocompletion.
+One workaround for this problem is to use VSCodium instead of vscode, and to install the OCaml Platform Syntax extension rather than the OCaml Platform extension, but of course, this will only give you OCaml syntax highlighting, not linting or autocompletion.
 
 <br>
 
