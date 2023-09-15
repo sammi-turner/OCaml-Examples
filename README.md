@@ -87,35 +87,59 @@ alias dr='dune exec ./bin/main.exe'
 
 Dune creates a file structure with lots of config files. 
 
-If you don't need all that, then you can use OCamlbuild instead, but be warned that you may have to disable your current linting tool, or you will get bogus linting errors!
+If you don't need all that, then you can use OCamlbuild instead.
+
+## Bogus linting errors
+
+The OCaml Platform vscode extension is configured to Dune rather than OCaml, so using OCamlbuild projects with it will generate bogus linting errors.
+
+I don't know if this problem also occurs in terminal-based editors where an OCaml LSP is set up, but I dare say that it might.
+
+One workaround for this is to use VSCodium instead of VSCode, and to install the OCaml Platform Syntax extension rather than the OCaml Platform Extension, but of course, this will only give you OCaml syntax highlighting, not linting or autocompletion.
 
 <br>
 
-### To compile a native binary
+### Useful shell functions
+
+These functions can be run with either zero parameters, or a list of dependencies.
+
+OCaml build (ob)
 
 ```
-ocamlbuild -use-ocamlfind main.native
+ob() {
+  if [ $# -eq 0 ]; then
+    ocamlbuild -use-ocamlfind main.native
+  else
+    local pkgs="$*"
+    ocamlbuild -use-ocamlfind -pkgs "$pkgs" main.native
+  fi
+}
 ```
 
-### To run the binary
+OCaml build and run (obr)
 
 ```
-./main.native
+obr() {
+  if [ $# -eq 0 ]; then
+    ocamlbuild -use-ocamlfind main.native && ./main.native
+  else
+    local pkgs="$*"
+    ocamlbuild -use-ocamlfind -pkgs "$pkgs" main.native && ./main.native
+  fi
+}
 ```
 
-### To compile and run the binary
+<br>
+
+### Useful shell alias
+
+Run OCaml binary (rob)
 
 ```
-ocamlbuild -use-ocamlfind main.native && ./main.native
+alias rob='./main.native'
 ```
 
-### Linking dependencies
-
-Replace "your_opam_packages" with the correct dependency names.
-
-```
-ocamlbuild -use-ocamlfind -pkgs your_opam_packages main.native
-```
+<br>
 
 ### Can I delete the build folder?
 
