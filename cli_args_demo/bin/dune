@@ -1,0 +1,4 @@
+(executable
+ (public_name cli_args_demo)
+ (name main)
+ (libraries cli_args_demo))
