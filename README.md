@@ -93,7 +93,7 @@ If you don't need all that, then you can use OCamlbuild instead.
 
 ## Bogus linting errors
 
-The OCaml Platform extension for VSCode is configured to Dune rather than OCaml, so using OCamlbuild projects with it will generate bogus linting errors.
+The OCaml Platform extension for VSCode is configured to Dune rather than OCamlbuild, so using OCamlbuild projects with it will generate bogus linting errors.
 
 I don't know if this problem also occurs in terminal-based editors where an OCaml LSP is set up, but I dare say that it might.
 
