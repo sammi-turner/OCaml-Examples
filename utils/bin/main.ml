@@ -2,11 +2,8 @@ open Utils
 
 let () =
   start;
-  add "What is your name? ";
-  show;
+  vputs ("What is your name? ");
   let name = vinput 20 in
-  add "Hello, ";
-  add name;
-  add "! ";
-  show;
-  finish "\n\nPress any key to close the virtual terminal. "
+  vputs ("Hello, " ^ name);
+  vputs ("!\n\n");
+  finish "Press any key to close the virtual terminal. "

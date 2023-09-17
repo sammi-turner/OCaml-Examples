@@ -15,30 +15,23 @@ open Utils
 
 let () =
   start;
-  add "What is your name? ";
-  show;
+  vputs "What is your name? ";
   let name = vinput 20 in
-  add "Hello, ";
-  add name;
-  add "! ";
-  show;
-  finish ("\n\nPress any key to close. ");
+  vputs "Hello, " ^ name ^ "!";
+  finish "\n\nPress any key to close the virtual terminal. "
 
 *)
-
-let add (s:string) : unit = 
-  ignore (addstr s)
-
-let show : unit =
-  ignore (refresh())
 
 let start : unit =
   let win = initscr () in
   ignore (keypad win true)
 
+let vputs (s:string) : unit =
+  ignore (addstr s);
+  ignore (refresh())
+
 let finish (s:string) : unit =
-  add s;
-  show;
+  vputs s;
   ignore (getch ());
   endwin ()
 
@@ -46,7 +39,7 @@ let vinput (n:int) : string =
   let buffer = String.make n ' ' in
   ignore (getnstr buffer 0 n);
   buffer
-
+  
 (* 
 
 USER INPUT
@@ -576,4 +569,3 @@ let slice_count (s:string) (delim:char) : int =
     | _ :: tail -> count_words (acc + 1) tail
   in
   s |> String.split_on_char delim |> count_words 0
-
