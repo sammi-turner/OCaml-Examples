@@ -3,24 +3,21 @@ open Printf
 
 (* Utility functions *)
 
-let add (s:string) : unit = 
-  ignore (addstr s)
-
-let show : unit =
-  ignore (refresh())
-
 let start : unit =
   let win = initscr () in
-  ignore (keypad win true);;
+  ignore (keypad win true)
+
+let vputs (s:string) : unit =
+  ignore (addstr s);
+  ignore (refresh())
+
+let finish (s:string) : unit =
+  vputs s;
+  ignore (getch ());
+  endwin ()
 
 let cursor_off : unit =
   ignore (curs_set(0))
-
-let finish (s:string) : unit =
-  add s;
-  show;
-  ignore (getch ());
-  endwin ();
 
 (* Game class *)
 
@@ -66,8 +63,7 @@ class game = object(self)
       if dice.(i) > 0 then (
         let _ = self#score_card in
         let s = sprintf "How many %ds do you wish to re-roll? " i in
-        add s;
-        show;
+        vputs s;
         let x = self#numeric_input () in
         if x > 0 && x <= dice.(i) then (dice.(i) <- dice.(i) - x; dice.(0) <- dice.(0) + x)
       )
@@ -75,85 +71,85 @@ class game = object(self)
 
   method score_card : unit =
     clear ();
-    add "\n    SCORE CARD\n";
+    vputs "\n    SCORE CARD\n";
 
     let _ = 
-    add "\n    Ones                     ";
+    vputs "\n    Ones                     ";
     match scores.(0) with
-      | -1 -> add "a"
-      | _ -> add (string_of_int(scores.(0))) in
+      | -1 -> vputs "a"
+      | _ -> vputs (string_of_int(scores.(0))) in
 
     let _ = 
-    add "\n    Twos                     ";
+    vputs "\n    Twos                     ";
     match scores.(1) with
-      | -1 -> add "b"
-      | _ -> add (string_of_int(scores.(1))) in
+      | -1 -> vputs "b"
+      | _ -> vputs (string_of_int(scores.(1))) in
 
     let _ = 
-    add "\n    Threes                   ";
+    vputs "\n    Threes                   ";
     match scores.(2) with
-      | -1 -> add "c"
-      | _ -> add (string_of_int(scores.(2))) in
+      | -1 -> vputs "c"
+      | _ -> vputs (string_of_int(scores.(2))) in
 
     let _ = 
-    add "\n    Fours                    ";
+    vputs "\n    Fours                    ";
     match scores.(3) with
-      | -1 -> add "d"
-      | _ -> add (string_of_int(scores.(3))) in
+      | -1 -> vputs "d"
+      | _ -> vputs (string_of_int(scores.(3))) in
 
     let _ = 
-    add "\n    Fives                    ";
+    vputs "\n    Fives                    ";
     match scores.(4) with
-      | -1 -> add "e"
-      | _ -> add (string_of_int(scores.(4))) in
+      | -1 -> vputs "e"
+      | _ -> vputs (string_of_int(scores.(4))) in
 
     let _ = 
-    add "\n    Sixes                    ";
+    vputs "\n    Sixes                    ";
     match scores.(5) with
-      | -1 -> add "f"
-      | _ -> add (string_of_int(scores.(5))) in
+      | -1 -> vputs "f"
+      | _ -> vputs (string_of_int(scores.(5))) in
 
     let _ = 
-    add "\n    Three of a Kind          ";
+    vputs "\n    Three of a Kind          ";
     match scores.(6) with
-      | -1 -> add "g"
-      | _ -> add (string_of_int(scores.(6))) in
+      | -1 -> vputs "g"
+      | _ -> vputs (string_of_int(scores.(6))) in
 
     let _ = 
-    add "\n    Four of a Kind           ";
+    vputs "\n    Four of a Kind           ";
     match scores.(7) with
-      | -1 -> add "h"
-      | _ -> add (string_of_int(scores.(7))) in
+      | -1 -> vputs "h"
+      | _ -> vputs (string_of_int(scores.(7))) in
 
     let _ = 
-    add "\n    Full House               ";
+    vputs "\n    Full House               ";
     match scores.(8) with
-      | -1 -> add "i"
-      | _ -> add (string_of_int(scores.(8))) in
+      | -1 -> vputs "i"
+      | _ -> vputs (string_of_int(scores.(8))) in
 
     let _ = 
-    add "\n    Small Straight           ";
+    vputs "\n    Small Straight           ";
     match scores.(9) with
-      | -1 -> add "j"
-      | _ -> add (string_of_int(scores.(9))) in
+      | -1 -> vputs "j"
+      | _ -> vputs (string_of_int(scores.(9))) in
 
     let _ = 
-    add "\n    Large Straight           ";
+    vputs "\n    Large Straight           ";
     match scores.(10) with
-      | -1 -> add "k"
-      | _ -> add (string_of_int(scores.(10))) in
+      | -1 -> vputs "k"
+      | _ -> vputs (string_of_int(scores.(10))) in
 
     let _ = 
-    add "\n    Chance                   ";
+    vputs "\n    Chance                   ";
     match scores.(11) with
-      | -1 -> add "l"
-      | _ -> add (string_of_int(scores.(11))) in
+      | -1 -> vputs "l"
+      | _ -> vputs (string_of_int(scores.(11))) in
 
     let _ = 
-    add "\n    Yahtzee                  ";
+    vputs "\n    Yahtzee                  ";
     match scores.(12) with
-      | -1 -> add "m"
-      | _ -> add (string_of_int(scores.(12))) in
+      | -1 -> vputs "m"
+      | _ -> vputs (string_of_int(scores.(12))) in
 
     let s = sprintf "
          
@@ -162,14 +158,12 @@ class game = object(self)
     %d 1s, %d 2s, %d 3s, %d 4s, %d 5s and %d 6s.
     You have %d re-rolls.\n
     " dice.(1) dice.(2) dice.(3) dice.(4) dice.(5) dice.(6) dice.(0) in
-    add s;
-    show
+    vputs s
     
   method scoring_selection : unit =
     let loop =
       self#score_card in
-      add "Which scorebox? ";
-      show;
+      vputs "Which scorebox? ";
       ignore (curs_set(0));
       let x = getch () in
       match x with
@@ -255,7 +249,7 @@ class game = object(self)
     "
     scores.(0) scores.(1) scores.(2) scores.(3) scores.(4) scores.(5) self#upper_total self#upper_bonus 
     scores.(6) scores.(7) scores.(8) scores.(9) scores.(10) scores.(11) scores.(12) self#grand_total in
-    add output;
+    vputs output;
     let channel = open_out_gen [Open_append; Open_creat] 0o666 "scores.txt" in
     output_string channel output;
     close_out channel
