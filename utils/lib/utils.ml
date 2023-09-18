@@ -39,7 +39,13 @@ let vinput (n:int) : string =
   let buffer = String.make n ' ' in
   ignore (getnstr buffer 0 n);
   buffer
-  
+
+let cursor_off : unit =
+  ignore (curs_set(0))
+
+let keypress_off : unit =
+  ignore (noecho())
+
 (* 
 
 USER INPUT
