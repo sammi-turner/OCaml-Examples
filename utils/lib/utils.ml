@@ -3,11 +3,13 @@ open Curses
 
 (*
    
-CURSES LIBRARY FUNCTIONS
+WRAPPERS AROUND CURSES LIBRARY FUNCTIONS
 
 - The start and finish functions open and close the virtual terminal.
 - The add and show functions work together to display text to the virtual terminal.
 - The vinput function takes input from the user in the virtual terminal up to a maximum length.
+- The render_menu function is a helper for select_option.
+- The select_option function allows the user to select an item from a menu. This returns a corresponding integer.
 
 Example:
 
@@ -46,6 +48,42 @@ let cursor_off : unit =
 let keypress_off : unit =
   ignore (noecho())
 
+let render_menu (menu:string array) (size:int) (count:int) : unit =
+  clear ();
+  let s = ref "\n    " in
+  s := !s ^ menu.(0) ^ "\n\n";
+  for i = 1 to size - 1 do
+    if i = count then
+      s := !s ^ "  > " ^ menu.(i) ^ "\n"
+    else
+      s := !s ^ "    " ^ menu.(i) ^ "\n"
+  done;
+  vputs !s
+
+let select_option (menu:string array) : int =
+  cursor_off;
+  
+  let size = ref (Array.length menu) in
+  let value = ref 1 in
+  let key_press = ref 0 in
+  
+  while !key_press <> int_of_char '\n' do
+    render_menu menu !size !value;
+    key_press := getch ();
+    
+    match !key_press with
+    | k when k = Key.down ->
+        incr value;
+        if !value = !size then value := 1;
+        render_menu menu !size !value
+    | k when k = Key.up ->
+        decr value;
+        if !value = 0 then value := !size - 1;
+        render_menu menu !size !value
+    | _ -> ()
+  done;
+  !value
+  
 (* 
 
 USER INPUT
