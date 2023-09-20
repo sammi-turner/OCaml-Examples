@@ -14,13 +14,15 @@ WRAPPERS AROUND CURSES LIBRARY FUNCTIONS
 Example:
 
 open Utils
+open Printf
 
 let () =
   start;
-  vputs "What is your name? ";
-  let name = vinput 20 in
-  vputs "Hello, " ^ name ^ "!";
-  finish "\n\nPress any key to close the virtual terminal. "
+  keypress_off;
+  let city = [|"CITIES";"London";"Paris";"Berlin";"Rome"|] in
+  let num = select_option city in
+  let s = sprintf "\nYou entered option %d. Press any key to close.\n" num in
+  finish s
 
 *)
 
