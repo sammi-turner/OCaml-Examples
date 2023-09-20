@@ -85,6 +85,55 @@ let select_option (menu:string array) : int =
     | _ -> ()
   done;
   !value
+
+let renderPrompt (prompt:string) (buffer:string) (pos:int) : unit =
+  clear ();
+  let s = ref prompt in
+  for i = 0 to pos - 1 do
+    s := !s ^ (String.make 1 buffer.[i])
+  done;
+  vputs !s
+  
+let edit_prompt (prompt:string) (buffer:string) (max:int) : string =
+  let ch = ref 0 in
+  let exit = ref false in
+  let result = ref buffer in
+  let pos = ref (String.length buffer) in
+  let res = ref !pos in
+  renderPrompt prompt !result !pos;
+
+  while not !exit && !pos < max do
+    ch := getch ();
+
+    if !ch = Key.left && !pos > 0 then
+      pos := !pos - 1;
+
+    if !ch = Key.right && !res > !pos then
+      pos := !pos + 1;
+
+    if (!ch = Key.backspace || !ch = 127 || !ch = Char.code '\b') && !pos > 0 then (
+      pos := !pos - 1;
+      res := !res - 1;
+      let new_result = String.sub !result 0 !pos ^ String.sub !result (!pos + 1) (!res - !pos) in
+      result := new_result
+    )
+    else if !ch > 31 && !ch < 127 then (
+      if !pos < !res then (
+        let new_result = String.sub !result 0 !pos ^ String.make 1 (Char.chr !ch) ^ String.sub !result !pos (!res - !pos) in
+        result := new_result;
+        pos := !pos + 1
+      ) else (
+        result := !result ^ String.make 1 (Char.chr !ch);
+        pos := !pos + 1;
+        res := !res + 1
+      )
+    )
+    else if !ch = Char.code '\n' then
+      exit := true;
+
+    renderPrompt prompt !result !pos
+  done;
+  !result
   
 (* 
 

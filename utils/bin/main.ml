@@ -3,8 +3,6 @@ open Printf
 
 let () =
   start;
-  keypress_off;
-  let city = [|"CITIES";"London";"Paris";"Berlin";"Rome"|] in
-  let num = select_option city in
-  let s = sprintf "\nYou entered option %d. Press any key to close.\n" num in
-  finish s
+  let s = edit_prompt "What is your name? " "Lisa" 30 in
+  let final = sprintf "\n\nYou're tearing me apart %s!\n\nPress any key to close. " s in
+  finish final
