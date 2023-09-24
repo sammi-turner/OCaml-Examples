@@ -26,7 +26,7 @@ let create_server (port:file_perm) =
   while true do
     let (descriptor, _caller) = accept sock in
     Thread.create handle_connection descriptor |> ignore
-  done;;
+  done
 
-print_endline "Server running on localhost 3000... ";
-create_server 3000
+let () = print_endline "Server running on localhost 3000... "
+let () = create_server 3000
