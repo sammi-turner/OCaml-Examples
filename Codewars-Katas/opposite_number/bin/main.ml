@@ -15,6 +15,5 @@ let opposite (number:int) : int =
 
 let test0 = opposite 1
 let test1 = opposite 14
-let test2 = opposite (-34);;
-
-Printf.printf "%d\n%d\n%d\n" test0 test1 test2
+let test2 = opposite (-34)
+let () = Printf.printf "%d\n%d\n%d\n" test0 test1 test2
