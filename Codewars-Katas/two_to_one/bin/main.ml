@@ -25,6 +25,5 @@ let longest (s1:string) (s2:string) : string =
   String.of_seq (List.to_seq chars)
 
 let test0 = longest "xyaabbbccccdefww" "xxxxyyyyabklmopq"
-let test1 = longest "abcde" "defgh";;
-
-Printf.printf "%s\n%s\n" test0 test1
+let test1 = longest "abcde" "defgh"
+let () = Printf.printf "%s\n%s\n" test0 test1
