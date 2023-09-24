@@ -173,10 +173,11 @@ let repl () =
       let result = evaluate line in
       print_endline result;
       loop ()
-  in loop ();;
+  in loop ()
 
-print_endline "\nS-EXPRESSION EVALUATOR REPL\n";
-print_endline "Please enter valid nested s-expressions of the form : (operator expression expression)";
-print_endline "The operators recognised are : +, -, * and /";
-print_endline "Enter a blank input to exit the program";
-repl ()
+let () =
+  print_endline "\nS-EXPRESSION EVALUATOR REPL\n";
+  print_endline "Please enter valid nested s-expressions of the form : (operator expression expression)";
+  print_endline "The operators recognised are : +, -, * and /";
+  print_endline "Enter a blank input to exit the program";
+  repl ()
