@@ -1,4 +1,0 @@
-(executable
- (public_name sexpr_eval)
- (name main)
- (libraries sexpr_eval))
