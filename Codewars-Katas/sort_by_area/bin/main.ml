@@ -38,5 +38,5 @@ let rec print_shapes = function
       Printf.printf "Circle %f\n" r;
       print_shapes shapes
 
-let test = sort_by_area [Rectangle (4.23, 6.43); Circle 1.23; Circle 3.444; Rectangle (1.342, 3.212)];;
-print_shapes test
+let test = sort_by_area [Rectangle (4.23, 6.43); Circle 1.23; Circle 3.444; Rectangle (1.342, 3.212)]
+let () = print_shapes test
