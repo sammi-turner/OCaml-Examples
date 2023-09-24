@@ -16,8 +16,4 @@ let l0 = [1; 2; 3; 4]
 let l1 = [2; 3; 5]
 let l2 = [7; 7]
 
-let r0 = grow l0
-let r1 = grow l1
-let r2 = grow l2;;
-
-Printf.printf("%d\n%d\n%d\n") r0 r1 r2
+let () = Printf.printf("%d %d %d\n") (grow l0) (grow l1) (grow l2)
