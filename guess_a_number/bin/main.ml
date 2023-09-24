@@ -9,10 +9,10 @@ let rec guess_number (num:int) : unit =
     guess_number num
   ) else (
     print_string "You got it!\n"
-  );;
+  )
 
-Random.self_init ();
-let actual_number = Random.int 100 in
-print_string "I'm thinking of a number between 0 and 99.\n";
-guess_number actual_number
-
+let () =
+  Random.self_init ();
+  let actual_number = Random.int 100 in
+  print_string "I'm thinking of a number between 0 and 99.\n";
+  guess_number actual_number
