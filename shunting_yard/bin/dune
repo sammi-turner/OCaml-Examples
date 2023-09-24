@@ -1,0 +1,4 @@
+(executable
+ (public_name shunting_yard)
+ (name main)
+ (libraries shunting_yard str))
