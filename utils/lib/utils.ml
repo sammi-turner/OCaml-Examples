@@ -4,11 +4,14 @@ open Curses
    
 WRAPPERS AROUND CURSES LIBRARY FUNCTIONS
 
-- The start and finish functions open and close the virtual terminal.
-- The add and show functions work together to display text to the virtual terminal.
+- The start function opens the virtual terminal.
+- The finish function prompts the users and closes the virtual terminal on the next keypress.
+- The vputs function prints text to the virtual terminal.
 - The vinput function takes input from the user in the virtual terminal up to a maximum length.
 - The render_menu function is a helper for select_option.
-- The select_option function allows the user to select an item from a menu. This returns a corresponding integer.
+- The select_option function allows the user to select an item from a menu.
+- The render_prompt function is a helper for edit_prompt.
+- The edit_prompt function prompts the user to edit an existing buffer.
 
 Example:
 
