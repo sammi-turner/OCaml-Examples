@@ -28,6 +28,5 @@ let int_rac (n:int) (guess:int) : int =
   aux n guess 1
 
 let test0 = int_rac 25 1
-let test1 = int_rac 125348 300;;
-
-Printf.printf "%d %d\n" test0 test1
+let test1 = int_rac 125348 300
+let () = Printf.printf "%d %d\n" test0 test1
