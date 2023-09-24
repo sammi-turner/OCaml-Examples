@@ -25,6 +25,5 @@ let is_palindrome (s:string) : bool =
 
 let test0 = is_palindrome "Abba"
 let test1 = is_palindrome "Hello"
-let test2 = is_palindrome "wow";;
-
-Printf.printf "%b\n%b\n%b\n" test0 test1 test2
+let test2 = is_palindrome "wow"
+let () = Printf.printf "%b\n%b\n%b\n" test0 test1 test2
