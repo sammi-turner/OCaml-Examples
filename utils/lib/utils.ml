@@ -1,4 +1,3 @@
-open Printf
 open Curses
 
 (*
@@ -14,14 +13,13 @@ WRAPPERS AROUND CURSES LIBRARY FUNCTIONS
 Example:
 
 open Utils
-open Printf
 
 let () =
   start;
   keypress_off;
   let city = [|"CITIES";"London";"Paris";"Berlin";"Rome"|] in
   let num = select_option city in
-  let s = sprintf "\nYou entered option %d. Press any key to close.\n" num in
+  let s = Printf.sprintf "\nYou entered option %d. Press any key to close.\n" num in
   finish s
 
 *)
@@ -134,32 +132,22 @@ let edit_prompt (prompt:string) (buffer:string) (max:int) : string =
     renderPrompt prompt !result !pos
   done;
   !result
-  
-(* 
-
-USER INPUT
-
-The user_input function prompts the user with a string and returns the user input as another string.
-
-Example:
-
-open Utils
-
-let s = user_input "Hello, what is your name? ";;
-printf "Nice to meet you %s!\n" s
-
-*)
-
-let user_input (s:string) : string =
-  printf "%s " s;
-  flush stdout;
-  read_line ()
 
 (*
    
 IS UNIX
 
 The is_unix function returns true if the program is being run on a unix-like operating system, or false if it is not.
+
+Example :
+
+open Utils
+
+let v = is_unix ()
+let () =
+  match v with
+  | true -> print_string "Its Unix."
+  | false -> print_string "Its not Unix."
 
 *)
 
@@ -168,20 +156,6 @@ let is_unix () : bool =
   match os_type with
   | "Unix" | "Cygwin" | "MacOS" -> true
   | _ -> false
-
-(*
-
-CLEAR TERMINAL
-
-The clear_terminal function wipes the terminal window.
-
-*)
-
-let clear_terminal () : unit =
-  if Sys.os_type = "Win32" then
-    ignore (Sys.command "cls")
-  else
-    ignore (Sys.command "clear")
 
 (*
    
@@ -195,11 +169,10 @@ open Utils
 
 let print_file_contents (x:string option) : unit =
   match x with
-  | Some x -> printf "File contents : %s\n" x
-  | None -> printf "That file does not exist in the working directory.\n"
+  | Some x -> print_string x
+  | None -> print_string "That file does not exist in the working directory."
 
-let content = read_file "example.txt";;
-print_file_contents content
+let () = print_file_contents (read_file "example.txt")
 
 *)
 
@@ -220,9 +193,9 @@ The write_file function writes a string to a particular file, or overwrites it, 
 
 Example:
 
-open Utils;;
+open Utils
 
-write_file "example.txt" "Oh, hi Mark!"
+let () = write_file "example.txt" "Oh, hi Mark!"
 
 *)
 
@@ -239,9 +212,9 @@ The append_to_file function either appends a string to a file, or writes to the 
 
 Example:
 
-open Utils;;
+open Utils
 
-append_to_file "example.txt" "Oh, hi Mark!"
+let () = append_to_file "example.txt" "Oh, hi Mark!"
 
 *)
 
@@ -258,10 +231,9 @@ The delete_file function attempts to delete a file from the working directory.
 
 Example:
 
-open Utils;;
+open Utils
 
-let result = delete_file "example.txt";
-printf "%b\n" result
+let () = delete_file "example.txt"
 
 *)
 
@@ -283,9 +255,9 @@ open Utils
 
 let die0 = pseudo 6
 let die1 = pseudo 6
-let die2 = pseudo 6;;
+let die2 = pseudo 6
 
-printf "%d %d %d\n" die0 die1 die2
+let () = Printf.printf "%d %d %d" die0 die1 die2
 
 *)
 
@@ -305,8 +277,8 @@ Example:
 
 open Utils
 
-let test = slices_to_string ["You're";"tearing";"me";"apart";"Lisa!"] ' ';;
-print_endline test
+let test = slices_to_string ["You're";"tearing";"me";"apart";"Lisa!"] ' '
+let () = print_string test
 
 *)
 
@@ -320,68 +292,6 @@ let slices_to_string (lst:string list) (ch:char) : string =
 
 (*
    
-PRINT LIST
-
-The print_list function prints out a list of strings with each string on a new line.
-
-Example:
-
-open Utils
-
-let people = ["Mark";"Lisa";"Johnny"];;
-print_list people
-
-*)
-
-let print_list (lst:string list) : unit = 
-  List.iter (fun str -> printf "%s\n" str) lst
-
-(*
-   
-REMOVE EMPTY STRINGS
-
-The remove_empty_strings function returns the non-empty strings from a list. 
-
-open Utils
-
-let test = ["hello";"";"doggie";"";""]
-let non_empty_strings = remove_empty_strings test;;
-print_list non_empty_strings
-
-*)
-
-let rec remove_empty_strings (lst:string list) : string list =
-  match lst with
-  | [] -> []
-  | "" :: tail -> remove_empty_strings tail
-  | head :: tail -> head :: remove_empty_strings tail
-
-(*
-   
-NTH CHAR
-
-The nth_char function returns a char option.
-
-Example:
-
-open Utils
-
-let print_char_option (x:char option) =
-  match x with
-  | Some x -> printf "%c\n" x
-  | None -> printf "error\n"
-
-let test = nth_char "OCaml" 2;;
-print_char_option test
-
-*)
-
-let nth_char (s:string) (n:int) : char option  =
-  if n < 0 || n >= String.length s then None
-  else Some s.[n]
-
-(*
-   
 COUNT CHAR INSTANCES
 
 The count_char_instances function returns the number of instances of a char in a string.
@@ -390,8 +300,8 @@ Example:
 
 open Utils
 
-let char_count = count_char_instances "What a story Mark" 'a';;
-printf "%i\n" char_count
+let char_count = count_char_instances "What a story Mark" 'a'
+let () = print_int char_count
 
 *)
 
@@ -405,42 +315,6 @@ let count_char_instances (s:string) (c:char) : int =
 
 (*
    
-NTH STRING
-
-The nth_string function returns a string option.
-
-Example:
-
-open Utils
-
-let print_string_option (x:string option) =
-  match x with
-  | Some x -> printf "%s\n" x
-  | None -> printf "error\n"
-
-let people = ["Mark";"Lisa";"Johnny"]
-
-let person0 = nth_string people 0
-let person1 = nth_string people 1
-let person2 = nth_string people 2
-let person3 = nth_string people 3;;
-
-print_string_option person0;
-print_string_option person1;
-print_string_option person2;
-print_string_option person3
-
-*)
-
-let rec nth_string (lst:string list) (n:int) : string option =
-  match lst with
-  | [] -> None
-  | head :: tail ->
-    if n = 0 then Some head
-    else nth_string tail (n-1)
-
-(*
-   
 COUNT STRING INSTANCES
 
 The count_string_instances function returns the integer number of instances of a string in a list of strings.
@@ -450,8 +324,8 @@ Example:
 open Utils
 
 let lst = ["Oh";"Denny";"Denny";"Denny";"boy"]
-let count = count_string_instances lst "Denny";;
-printf "%d\n" count
+let count = count_string_instances lst "Denny"
+let () = print_int count
 
 *)
 
@@ -473,9 +347,9 @@ The nth_slice function returns either an empty string or a slice from the argume
 
 Example:
 
-open Utils;;
+open Utils
 
-print_endline (nth_slice 3 "This is a test" ' ')
+let () = print_string (nth_slice 3 "This is a test" ' ')
 
 *)
 
@@ -498,9 +372,9 @@ open Utils
 
 let test0 = is_digit '0'
 let test1 = is_digit '9'
-let test2 = is_digit 'a';;
+let test2 = is_digit 'a'
 
-printf "%b %b %b\n" test0 test1 test2
+let () = Printf.printf "%b %b %b" test0 test1 test2
 
 *)
 
@@ -521,7 +395,7 @@ let test0 = is_lower_case 'a'
 let test1 = is_lower_case 'A'
 let test2 = is_lower_case ' ';;
 
-printf "%b %b %b\n" test0 test1 test2
+let () = Printf.printf "%b %b %b" test0 test1 test2
 
 *)
 
@@ -540,9 +414,9 @@ open Utils
 
 let test0 = is_upper_case 'a'
 let test1 = is_upper_case 'A'
-let test2 = is_upper_case ' ';;
+let test2 = is_upper_case ' '
 
-printf "%b %b %b\n" test0 test1 test2
+let () = Printf.printf "%b %b %b" test0 test1 test2
 
 *)
 
@@ -561,11 +435,12 @@ open Utils
 
 let print_int_option (x:int option) =
   match x with
-  | Some x -> printf "%d\n" x
-  | None -> printf "error\n";;
+  | Some x -> print_int x
+  | None -> print_string "error"
 
-print_int_option(to_int "420.69");
-print_int_option(to_int "69")
+let () = print_int_option(to_int "420.69")
+let () = print_string(" ")
+let () = print_int_option(to_int "69")
 
 *)
 
@@ -584,61 +459,14 @@ Example:
 open Utils
 
 let test0 = is_int "abc"
-let test1 = is_int "42";;
+let test1 = is_int "42"
 
-printf "%b %b\n" test0 test1
+let () = Printf.printf "%b %b" test0 test1
 
 *)
 
 let is_int (s:string) : bool = 
   let x = to_int s in
-  match x with
-  | None -> false
-  | _ -> true
-
-(*
-
-TO FLOAT
-
-The to_float function returns a float option.
-
-Example:
-
-open Utils
-
-let print_float_option (x:float option) =
-  match x with
-  | Some x -> printf "%f\n" x
-  | None -> printf "error\n";;
-
-print_float_option(to_float "420.69");
-print_float_option(to_float "69")
-
-*)
-
-let to_float (s:string) : float option =
-  try Some (float_of_string s)
-  with Failure _ -> None
-
-(*
-
-IS FLOAT
-
-The is_float function returns the boolean true if a string represents a float, or false if it does not.
-
-Example:
-
-open Utils
-
-let test0 = is_float "abc"
-let test1 = is_float "69.420";;
-
-printf "%b %b\n" test0 test1
-
-*)
-
-let is_float (s:string) : bool = 
-  let x = to_float s in
   match x with
   | None -> false
   | _ -> true
@@ -651,9 +479,9 @@ The slice_count function returns the number of slices in a string, as delmited b
 
 Example:
 
-open Utils;;
+open Utils
 
-printf "%i\n" (slice_count "You're,tearing,me,apart,Lisa!" ',')
+let () = print_int (slice_count "You're,tearing,me,apart,Lisa!" ',')
 
 *)
 
