@@ -5,6 +5,6 @@ let fizzbuzz (n:int) : unit =
     | 0, _ -> print_endline "Fizz"
     | _, 0 -> print_endline "Buzz"
     | _, _ -> Printf.printf "%d\n" i
-  done;;
+  done
 
-fizzbuzz 100
+let () = fizzbuzz 100
