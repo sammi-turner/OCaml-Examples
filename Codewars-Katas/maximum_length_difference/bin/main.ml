@@ -33,6 +33,6 @@ let num = mxdiflg a1 a2
 let ans =
   match num with
   | None -> "There wasn't a max value!"
-  | Some num -> string_of_int num;;
+  | Some num -> string_of_int num
 
-Printf.printf "%s\n" ans
+let () = Printf.printf "%s\n" ans
