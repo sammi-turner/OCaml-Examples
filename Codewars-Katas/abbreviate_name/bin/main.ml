@@ -22,6 +22,6 @@ let abbrev_name (name:string) : string =
 
 let test0 = abbrev_name "Joe Bloggs"
 let test1 = abbrev_name "Jane Smith"
-let test2 = abbrev_name "Tim Cook";;
+let test2 = abbrev_name "Tim Cook"
 
-Printf.printf "%s\n%s\n%s\n" test0 test1 test2
+let () = Printf.printf "%s\n%s\n%s\n" test0 test1 test2
