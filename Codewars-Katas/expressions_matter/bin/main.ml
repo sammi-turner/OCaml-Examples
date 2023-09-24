@@ -33,6 +33,5 @@ let expression_matter (a:int) (b:int) (c:int) : int =
 
 let test0 = expression_matter 2 3 5
 let test1 = expression_matter 1 2 4
-let test2 = expression_matter 3 6 8;;
-
-Printf.printf "%d\n%d\n%d\n" test0 test1 test2
+let test2 = expression_matter 3 6 8
+let () = Printf.printf "%d\n%d\n%d\n" test0 test1 test2
