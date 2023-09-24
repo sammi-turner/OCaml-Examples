@@ -20,6 +20,6 @@ let generate_shape (n: int) : string =
 
 let test0 = generate_shape 5
 let test1 = generate_shape 3
-let test2 = generate_shape 1;;
+let test2 = generate_shape 1
 
-Printf.printf "%s\n%s\n%s\n" test0 test1 test2
+let () = Printf.printf "%s\n%s\n%s\n" test0 test1 test2
