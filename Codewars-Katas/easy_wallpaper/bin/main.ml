@@ -33,6 +33,5 @@ let wallPaper (l: float) (w: float) (h: float) : string =
           t.(truncate(ceil(( ((l +. w) *. 2.0 *. h) /. 5.2) *. 1.15)))
 
 let test0 = wallPaper 4.0 3.5 3.0
-let test1 = wallPaper 0.0 3.5 3.0;;
-
-Printf.printf "%s\n%s\n" test0 test1
+let test1 = wallPaper 0.0 3.5 3.0
+let () = Printf.printf "%s\n%s\n" test0 test1
