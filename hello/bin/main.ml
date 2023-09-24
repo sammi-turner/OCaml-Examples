@@ -1,1 +1,1 @@
-print_endline "Hello Doggie 🐶 ";;
+let () = print_endline "Hello Doggie 🐶 "
