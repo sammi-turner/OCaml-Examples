@@ -10,6 +10,6 @@ let nth_prime (n:int) : int =
       else find_prime (candidate + 1) (counter + 1)
     else
       find_prime (candidate + 1) counter in
-  find_prime 2 0;;
+  find_prime 2 0
 
-Printf.printf "%d %d %d %d\n"  (nth_prime 0) (nth_prime 1) (nth_prime 2) (nth_prime 3)
+let () = Printf.printf "%d %d %d %d\n"  (nth_prime 0) (nth_prime 1) (nth_prime 2) (nth_prime 3)
