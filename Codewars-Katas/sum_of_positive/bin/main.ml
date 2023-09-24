@@ -17,6 +17,5 @@ let positive_sum (lst:int list) : int =
 
 let test0 = positive_sum []
 let test1 = positive_sum [0;-3]
-let test2 = positive_sum [1;-4;7;12];;
-
-Printf.printf "%d\n%d\n%d\n" test0 test1 test2
+let test2 = positive_sum [1;-4;7;12]
+let () = Printf.printf "%d\n%d\n%d\n" test0 test1 test2
