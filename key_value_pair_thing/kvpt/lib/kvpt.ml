@@ -18,7 +18,7 @@ let shell (s:string) : string =
   Sys.remove tmp_file;
   Bytes.to_string s
 
-let is_sqlite_installed () =
+let is_sqlite_installed () : bool =
   let s = shell "sqlite3 --version" in
   match s.[0] with
   | '3' -> true
