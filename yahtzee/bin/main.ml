@@ -271,11 +271,12 @@ class game = object(self)
       end
     done;
     self#output_scores
-end;;
+end
 
 (* Entry point *)
 
-start
-let instance = new game;;
-instance#main_loop;
-finish "    Good game! Press any key to close. "
+let () =
+  start
+  let instance = new game;;
+  instance#main_loop;
+  finish "    Good game! Press any key to close. "
