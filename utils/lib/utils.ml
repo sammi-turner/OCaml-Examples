@@ -2,12 +2,14 @@ open Curses
 
 (*
    
-WRAPPERS AROUND CURSES LIBRARY FUNCTIONS
+VIRTUAL TERMINAL FUNCTIONS
 
 - The start function opens the virtual terminal.
 - The finish function alerts the user with a string, then closes the virtual terminal on the next keypress.
 - The vputs function prints text to the virtual terminal.
 - The vinput function takes input from the user in the virtual terminal up to a maximum length.
+- The cursor_on and cursor_off functions control the visibility of the cursor in the virtual terminal.
+- The keypress_on and keypress_off functions control the visibility of key presses in the virtual terminal.
 - The render_menu function is a helper for select_option.
 - The select_option function allows the user to select an item from a menu.
 - The render_prompt function is a helper for edit_prompt.
@@ -45,8 +47,14 @@ let vinput (n:int) : string =
   ignore (getnstr buffer 0 n);
   buffer
 
+let cursor_on : unit =
+  ignore (curs_set(1))
+
 let cursor_off : unit =
   ignore (curs_set(0))
+
+let keypress_on : unit =
+  ignore (echo())
 
 let keypress_off : unit =
   ignore (noecho())
