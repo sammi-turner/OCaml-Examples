@@ -405,8 +405,7 @@ let finish (s:string) : unit =
 let vinput (n:int) : string =
   let buffer = String.make n ' ' in
   ignore (getnstr buffer 0 n);
-  let zero = Char.chr 0 in
-  nth_slice 0 buffer zero
+  nth_slice 0 buffer (Char.chr 0)
 
 let cursor_on : unit =
   ignore (curs_set(1))
