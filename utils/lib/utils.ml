@@ -2,150 +2,6 @@ open Curses
 
 (*
    
-VIRTUAL TERMINAL FUNCTIONS
-
-- The start function opens the virtual terminal.
-- The finish function alerts the user with a string, then closes the virtual terminal on the next keypress.
-- The vputs function prints text to the virtual terminal.
-- The vinput function takes input from the user in the virtual terminal up to a maximum length.
-- The cursor_on and cursor_off functions control the visibility of the cursor in the virtual terminal.
-- The keypress_on and keypress_off functions control the visibility of key presses in the virtual terminal.
-- The render_menu function is a helper for select_option.
-- The select_option function allows the user to select an item from a menu.
-- The render_prompt function is a helper for edit_prompt.
-- The edit_prompt function prompts the user to edit an existing buffer.
-
-Example:
-
-open Utils
-
-let () =
-  start;
-  keypress_off;
-  let city = [|"CITIES";"London";"Paris";"Berlin";"Rome"|] in
-  let num = select_option city in
-  let s = Printf.sprintf "\nYou entered option %d. Press any key to close.\n" num in
-  finish s
-
-*)
-
-let start : unit =
-  let win = initscr () in
-  ignore (keypad win true)
-
-let vputs (s:string) : unit =
-  ignore (addstr s);
-  ignore (refresh())
-
-let finish (s:string) : unit =
-  vputs s;
-  ignore (getch ());
-  endwin ()
-
-let vinput (n:int) : string =
-  let buffer = String.make n ' ' in
-  ignore (getnstr buffer 0 n);
-  buffer
-
-let cursor_on : unit =
-  ignore (curs_set(1))
-
-let cursor_off : unit =
-  ignore (curs_set(0))
-
-let keypress_on : unit =
-  ignore (echo())
-
-let keypress_off : unit =
-  ignore (noecho())
-
-let render_menu (menu:string array) (size:int) (count:int) : unit =
-  clear ();
-  let s = ref "\n    " in
-  s := !s ^ menu.(0) ^ "\n\n";
-  for i = 1 to size - 1 do
-    if i = count then
-      s := !s ^ "  > " ^ menu.(i) ^ "\n"
-    else
-      s := !s ^ "    " ^ menu.(i) ^ "\n"
-  done;
-  vputs !s
-
-let select_option (menu:string array) : int =
-  cursor_off;
-  
-  let size = ref (Array.length menu) in
-  let value = ref 1 in
-  let key_press = ref 0 in
-  
-  while !key_press <> int_of_char '\n' do
-    render_menu menu !size !value;
-    key_press := getch ();
-    
-    match !key_press with
-    | k when k = Key.down ->
-        incr value;
-        if !value = !size then value := 1;
-        render_menu menu !size !value
-    | k when k = Key.up ->
-        decr value;
-        if !value = 0 then value := !size - 1;
-        render_menu menu !size !value
-    | _ -> ()
-  done;
-  !value
-
-let renderPrompt (prompt:string) (buffer:string) (pos:int) : unit =
-  clear ();
-  let s = ref prompt in
-  for i = 0 to pos - 1 do
-    s := !s ^ (String.make 1 buffer.[i])
-  done;
-  vputs !s
-  
-let edit_prompt (prompt:string) (buffer:string) (max:int) : string =
-  let ch = ref 0 in
-  let exit = ref false in
-  let result = ref buffer in
-  let pos = ref (String.length buffer) in
-  let res = ref !pos in
-  renderPrompt prompt !result !pos;
-
-  while not !exit && !pos < max do
-    ch := getch ();
-
-    if !ch = Key.left && !pos > 0 then
-      pos := !pos - 1;
-
-    if !ch = Key.right && !res > !pos then
-      pos := !pos + 1;
-
-    if (!ch = Key.backspace || !ch = 127 || !ch = Char.code '\b') && !pos > 0 then (
-      pos := !pos - 1;
-      res := !res - 1;
-      let new_result = String.sub !result 0 !pos ^ String.sub !result (!pos + 1) (!res - !pos) in
-      result := new_result
-    )
-    else if !ch > 31 && !ch < 127 then (
-      if !pos < !res then (
-        let new_result = String.sub !result 0 !pos ^ String.make 1 (Char.chr !ch) ^ String.sub !result !pos (!res - !pos) in
-        result := new_result;
-        pos := !pos + 1
-      ) else (
-        result := !result ^ String.make 1 (Char.chr !ch);
-        pos := !pos + 1;
-        res := !res + 1
-      )
-    )
-    else if !ch = Char.code '\n' then
-      exit := true;
-
-    renderPrompt prompt !result !pos
-  done;
-  !result
-
-(*
-   
 IS UNIX
 
 The is_unix function returns true if the program is being run on a unix-like operating system, or false if it is not.
@@ -503,3 +359,148 @@ let slice_count (s:string) (delim:char) : int =
     | _ :: tail -> count_words (acc + 1) tail
   in
   s |> String.split_on_char delim |> count_words 0
+
+(*
+   
+VIRTUAL TERMINAL FUNCTIONS
+
+- The start function opens the virtual terminal.
+- The finish function alerts the user with a string, then closes the virtual terminal on the next keypress.
+- The vputs function prints text to the virtual terminal.
+- The vinput function takes input from the user in the virtual terminal up to a maximum length.
+- The cursor_on and cursor_off functions control the visibility of the cursor in the virtual terminal.
+- The keypress_on and keypress_off functions control the visibility of key presses in the virtual terminal.
+- The render_menu function is a helper for select_option.
+- The select_option function allows the user to select an item from a menu.
+- The render_prompt function is a helper for edit_prompt.
+- The edit_prompt function prompts the user to edit an existing buffer.
+
+Example:
+
+open Utils
+
+let () =
+  start;
+  keypress_off;
+  let city = [|"CITIES";"London";"Paris";"Berlin";"Rome"|] in
+  let num = select_option city in
+  let s = Printf.sprintf "\nYou entered option %d. Press any key to close.\n" num in
+  finish s
+
+*)
+
+let start : unit =
+  let win = initscr () in
+  ignore (keypad win true)
+
+let vputs (s:string) : unit =
+  ignore (addstr s);
+  ignore (refresh())
+
+let finish (s:string) : unit =
+  vputs s;
+  ignore (getch ());
+  endwin ()
+
+let vinput (n:int) : string =
+  let buffer = String.make n ' ' in
+  ignore (getnstr buffer 0 n);
+  let zero = Char.chr 0 in
+  nth_slice 0 buffer zero
+
+let cursor_on : unit =
+  ignore (curs_set(1))
+
+let cursor_off : unit =
+  ignore (curs_set(0))
+
+let keypress_on : unit =
+  ignore (echo())
+
+let keypress_off : unit =
+  ignore (noecho())
+
+let render_menu (menu:string array) (size:int) (count:int) : unit =
+  clear ();
+  let s = ref "\n    " in
+  s := !s ^ menu.(0) ^ "\n\n";
+  for i = 1 to size - 1 do
+    if i = count then
+      s := !s ^ "  > " ^ menu.(i) ^ "\n"
+    else
+      s := !s ^ "    " ^ menu.(i) ^ "\n"
+  done;
+  vputs !s
+
+let select_option (menu:string array) : int =
+  cursor_off;
+  
+  let size = ref (Array.length menu) in
+  let value = ref 1 in
+  let key_press = ref 0 in
+  
+  while !key_press <> int_of_char '\n' do
+    render_menu menu !size !value;
+    key_press := getch ();
+    
+    match !key_press with
+    | k when k = Key.down ->
+        incr value;
+        if !value = !size then value := 1;
+        render_menu menu !size !value
+    | k when k = Key.up ->
+        decr value;
+        if !value = 0 then value := !size - 1;
+        render_menu menu !size !value
+    | _ -> ()
+  done;
+  !value
+
+let renderPrompt (prompt:string) (buffer:string) (pos:int) : unit =
+  clear ();
+  let s = ref prompt in
+  for i = 0 to pos - 1 do
+    s := !s ^ (String.make 1 buffer.[i])
+  done;
+  vputs !s
+  
+let edit_prompt (prompt:string) (buffer:string) (max:int) : string =
+  let ch = ref 0 in
+  let exit = ref false in
+  let result = ref buffer in
+  let pos = ref (String.length buffer) in
+  let res = ref !pos in
+  renderPrompt prompt !result !pos;
+
+  while not !exit && !pos < max do
+    ch := getch ();
+
+    if !ch = Key.left && !pos > 0 then
+      pos := !pos - 1;
+
+    if !ch = Key.right && !res > !pos then
+      pos := !pos + 1;
+
+    if (!ch = Key.backspace || !ch = 127 || !ch = Char.code '\b') && !pos > 0 then (
+      pos := !pos - 1;
+      res := !res - 1;
+      let new_result = String.sub !result 0 !pos ^ String.sub !result (!pos + 1) (!res - !pos) in
+      result := new_result
+    )
+    else if !ch > 31 && !ch < 127 then (
+      if !pos < !res then (
+        let new_result = String.sub !result 0 !pos ^ String.make 1 (Char.chr !ch) ^ String.sub !result !pos (!res - !pos) in
+        result := new_result;
+        pos := !pos + 1
+      ) else (
+        result := !result ^ String.make 1 (Char.chr !ch);
+        pos := !pos + 1;
+        res := !res + 1
+      )
+    )
+    else if !ch = Char.code '\n' then
+      exit := true;
+
+    renderPrompt prompt !result !pos
+  done;
+  !result
