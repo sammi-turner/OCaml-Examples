@@ -85,6 +85,8 @@ alias dr='dune exec ./bin/main.exe'
 
 ## Alternative build system
 
+<br>
+
 ### Setting up ocamlbuild
 
 1. install ocamlbuild with
