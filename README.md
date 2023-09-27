@@ -109,7 +109,7 @@ opam install ocamlfind
 true: -traverse
 ```
 
-5. Use the following shell functions as shortcuts to compile and run your code.
+5. Use the following shell functions and alias as shortcuts to compile and run your code.
 
 These functions can be run with either zero parameters, or a list of dependencies.
 
@@ -147,7 +147,7 @@ alias rob='./main.native'
 
 <br>
 
-## Bogus linting errors
+### Bogus linting errors
 
 The OCaml Platform extension for VSCode is configured to Dune rather than OCamlbuild, so using OCamlbuild projects with it will generate bogus linting errors.
 
