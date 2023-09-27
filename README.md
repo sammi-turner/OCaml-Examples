@@ -87,35 +87,29 @@ alias dr='dune exec ./bin/main.exe'
 
 Dune creates a file structure with lots of config files. 
 
-If you don't need all that, then you can use OCamlbuild instead.
+If you don't need all that, then use the following steps.
 
-First install ocamlbuild with
+1. install ocamlbuild with
 
 ```
 opam install ocamlbuild
 ```
 
-then install ocamlfind with
+2. install ocamlfind with
 
 ```
 opam install ocamlfind
 ```
 
-Then use opam to install any dependencies required by the project.
+3. use opam to install any dependencies required by the project.
 
-<br>
+4. in the project directory, create an _tags file with the following code
 
-## Bogus linting errors
+```
+true: -traverse
+```
 
-The OCaml Platform extension for VSCode is configured to Dune rather than OCamlbuild, so using OCamlbuild projects with it will generate bogus linting errors.
-
-I don't know if this problem also occurs in terminal-based editors where an OCaml LSP is set up, but I dare say that it might.
-
-One workaround for this problem is to use VSCodium instead of vscode, and to install the OCaml Platform Syntax extension rather than the OCaml Platform extension, but of course, this will only give you OCaml syntax highlighting, not linting or autocompletion.
-
-<br>
-
-### Useful shell functions
+5. Use the following shell functions as shortcuts to compile and run your code.
 
 These functions can be run with either zero parameters, or a list of dependencies.
 
@@ -145,15 +139,21 @@ obr() {
 }
 ```
 
-<br>
-
-### Useful shell alias
-
 Run OCaml binary (rob)
 
 ```
 alias rob='./main.native'
 ```
+
+<br>
+
+## Bogus linting errors
+
+The OCaml Platform extension for VSCode is configured to Dune rather than OCamlbuild, so using OCamlbuild projects with it will generate bogus linting errors.
+
+I don't know if this problem also occurs in terminal-based editors where an OCaml LSP is set up, but I dare say that it might.
+
+One workaround for this problem is to use VSCodium instead of vscode, and to install the OCaml Platform Syntax extension rather than the OCaml Platform extension, but of course, this will only give you OCaml syntax highlighting, not linting or autocompletion.
 
 <br>
 
