@@ -89,6 +89,20 @@ Dune creates a file structure with lots of config files.
 
 If you don't need all that, then you can use OCamlbuild instead.
 
+First install ocamlbuild with
+
+```
+opam install ocamlbuild
+```
+
+then install ocamlfind with
+
+```
+opam install ocamlfind
+```
+
+Then use opam to install any dependencies required by the project.
+
 <br>
 
 ## Bogus linting errors
