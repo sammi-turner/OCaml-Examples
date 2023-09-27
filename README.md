@@ -83,11 +83,9 @@ alias dr='dune exec ./bin/main.exe'
 
 <br>
 
-## Building with OCamlbuild
+## Alternative build system
 
-Dune creates a file structure with lots of config files. 
-
-If you don't need all that, then use the following steps.
+### Setting up ocamlbuild
 
 1. install ocamlbuild with
 
@@ -103,15 +101,15 @@ opam install ocamlfind
 
 3. use opam to install any dependencies required by the project.
 
-4. in the project directory, create an _tags file with the following code
+4. in the project directory, create a _tags file with the following code
 
 ```
 true: -traverse
 ```
 
-5. Use the following shell functions and alias as shortcuts to compile and run your code.
+5. Use the following functions and alias as shortcuts to compile and run your code.
 
-These functions can be run with either zero parameters, or a list of dependencies.
+The functions can be run with either zero parameters, or a list of dependencies.
 
 OCaml build (ob)
 
