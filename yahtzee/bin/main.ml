@@ -5,7 +5,9 @@ open Printf
 
 let start : unit =
   let win = initscr () in
-  ignore (keypad win true)
+  ignore (keypad win true);
+  scrollok win true;
+  winch_handler_on ()
 
 let vputs (s:string) : unit =
   ignore (addstr s);
