@@ -312,7 +312,12 @@ let () = print_int_option(to_int "69")
 *)
 
 let to_int (s:string) : int option =
-  try Some (int_of_string s)
+  let len = String.length s in
+  if len > 1 && s.[0] = '0' then
+    None
+  else if len > 2 && s.[0] == '-' && s.[1] == '0' then
+    None
+  else try Some (int_of_string s)
   with Failure _ -> None
 
 (*
