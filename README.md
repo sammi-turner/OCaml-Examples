@@ -195,12 +195,8 @@ However, given that OCaml is an old language that is fairly popular in academia,
 
 I have had good results with prompts using the following template
 
-## Function Generation With LLMs
-
-I have had good results with prompts using the following template
-
 ```
-Write a [name] function in Python3 that takes
+Write a [name] function in OCaml that takes
 [name the parameters and their types] and returns
 a [type] such that [describe what the function does].
 Then show me the code.
