@@ -1,3 +1,5 @@
+<br>
+
 # Key Value Pair Thing 
 
 This utility is a shortcut for storing key-value pairs as sqlite tables, for updating them and for querying their values.
@@ -23,3 +25,5 @@ sqlite3 --version
 [SQL injection](https://www.w3schools.com/sql/sql_injection.asp) is a very real danger when user input string are plugged directly into larger strings that execute code.
 
 Don't forget to [sanitise](https://happycoding.io/tutorials/java-server/sanitizing-user-input) those input strings!
+
+<br>
