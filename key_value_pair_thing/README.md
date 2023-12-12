@@ -22,7 +22,7 @@ sqlite3 --version
 
 <img src="bobby_tables.png" width="100%" height="auto" />
 
-[SQL injection](https://www.w3schools.com/sql/sql_injection.asp) is a very real danger when user input string are plugged directly into larger strings that execute code.
+[SQL injection](https://www.w3schools.com/sql/sql_injection.asp) is a very real danger when user input strings are plugged directly into larger strings that execute code.
 
 Don't forget to [sanitise](https://happycoding.io/tutorials/java-server/sanitizing-user-input) those input strings!
 
