@@ -18,6 +18,12 @@ To install, run
 opam install dune
 ```
 
+followed by
+
+```
+opam init
+```
+
 <br>
 
 ### Check version
