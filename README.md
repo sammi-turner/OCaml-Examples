@@ -22,7 +22,7 @@ opam install dune
 
 ### Check version
 
-Determine the version of dune you are running with
+Close the terminal. Then re-open it to determine the version of dune you are running with
 
 ```
 dune --version
@@ -43,7 +43,7 @@ On unix systems, this will be located at
 Add the following code to the file, replacing 3.10 with the version number that you are running.
 
 ```
-(lang dune 3.10)
+(lang dune 3.14)
 (display quiet)
 ```
 
