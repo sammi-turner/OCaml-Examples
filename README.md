@@ -46,7 +46,7 @@ On unix systems, this will be located at
 ~/.config/dune/config
 ```
 
-Add the following code to the file, replacing 3.10 with the version number that you are running.
+Add the following code to the file, replacing 3.14 with the version number that you are running.
 
 ```
 (lang dune 3.14)
