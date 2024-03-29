@@ -1,6 +1,10 @@
-# Command Line Yahtzee Game in OCaml
+<br>
 
-This OCaml code implements a solitaire, command line version of the popular dice game Yahtzee. The game follows the standard rules of Yahtzee, where the player rolls five dice and tries to score points by making certain combinations.
+# Command Line Yahtzee
+
+This code implements a solitaire, command line version of the popular dice game Yahtzee. The game follows the standard rules of Yahtzee, where the player rolls five dice and tries to score points by making certain combinations.
+
+<br>
 
 ## Gameplay
 
@@ -10,6 +14,8 @@ This OCaml code implements a solitaire, command line version of the popular dice
 4. Once the player has used up all their re-rolls or chosen not to re-roll, they must select a category to score their dice.
 5. The game continues for 13 rounds, one for each category on the score card.
 6. At the end of the game, the final score card is displayed, and the scores are appended to a file named "scores.txt".
+
+<br>
 
 ## Score Card
 
@@ -26,11 +32,15 @@ The score card in this Yahtzee game includes the following categories:
 
 The game also includes an upper section bonus, which awards 35 additional points if the total of the upper section (Ones through Sixes) is greater than 62.
 
+<br>
+
 ## User Interface
 
 The game is played through a command line interface. The score card is displayed after each roll, showing the categories, their corresponding scores, and the current dice values. The player selects categories and makes re-roll decisions by entering the corresponding letter or number when prompted.
 
 The game uses the OCaml Curses library to handle the command line interface, allowing for a more interactive experience.
+
+<br>
 
 ## Implementation Details
 
@@ -39,3 +49,5 @@ The game is implemented using a `game` class in OCaml. The class contains method
 The `main_loop` method controls the flow of the game, iterating through the 13 rounds and calling the appropriate methods for each stage of a turn.
 
 The `output_scores` method is responsible for displaying the final score card and appending the scores to the "scores.txt" file.
+
+<br>
