@@ -2,7 +2,7 @@
 
 # Key Value Pair Thing (KVPT)
 
-KVPT is a lightweight OCaml library that provides a convenient way to store, update, and query key-value pairs using SQLite tables. It simplifies the process of working with key-value data by abstracting away the underlying SQLite operations.
+KVPT is a lightweight library that provides a convenient way to store, update, and query key-value pairs using SQLite tables. It simplifies the process of working with key-value data by abstracting away the underlying SQLite operations.
 
 <br>
 
