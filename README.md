@@ -49,7 +49,7 @@ On unix systems, this will be located at
 Add the following code to the file, replacing 3.10 with the version number that you are running.
 
 ```
-(lang dune 3.10)
+(lang dune 3.15)
 (display quiet)
 ```
 
