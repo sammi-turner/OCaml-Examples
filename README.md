@@ -14,13 +14,13 @@ To install opam, follow [these instructions](https://ocaml.org/docs/up-and-runni
 
 To install, run
 
-```
+```sh
 opam install dune
 ```
 
 followed by
 
-```
+```sh
 opam init
 ```
 
@@ -30,7 +30,7 @@ opam init
 
 Close the terminal. Then re-open it to determine the version of dune you are running with
 
-```
+```sh
 dune --version
 ```
 
@@ -59,7 +59,7 @@ Add the following code to the file, replacing 3.15 with the version number that 
 
 Dune New Project (dnp)
 
-```
+```sh
 dnp() {
   dune init project $1 && cd $1 && dune build
 }
@@ -71,19 +71,19 @@ dnp() {
 
 Dune Compile and Run (dcr)
 
-```
+```sh
 alias dcr='dune build && dune exec ./bin/main.exe'
 ```
 
 Dune Compile (dc)
 
-```
+```sh
 alias dc='dune build'
 ```
 
 Dune Run (dr)
 
-```
+```sh
 alias dr='dune exec ./bin/main.exe'
 ```
 
@@ -97,13 +97,13 @@ alias dr='dune exec ./bin/main.exe'
 
 1. install ocamlbuild with
 
-```
+```sh
 opam install ocamlbuild
 ```
 
 2. install ocamlfind with
 
-```
+```sh
 opam install ocamlfind
 ```
 
@@ -121,7 +121,7 @@ The functions can be run with either zero parameters, or a list of dependencies.
 
 OCaml build (ob)
 
-```
+```sh
 ob() {
   if [ $# -eq 0 ]; then
     ocamlbuild -use-ocamlfind main.native
@@ -134,7 +134,7 @@ ob() {
 
 OCaml build and run (obr)
 
-```
+```sh
 obr() {
   if [ $# -eq 0 ]; then
     ocamlbuild -use-ocamlfind main.native && ./main.native
@@ -147,7 +147,7 @@ obr() {
 
 Run OCaml binary (rob)
 
-```
+```sh
 alias rob='./main.native'
 ```
 
