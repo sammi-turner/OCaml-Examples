@@ -208,6 +208,8 @@ a [type] such that [describe what the function does].
 Then show me the code.
 ```
 
+Another strategy is to provide the LLM with a list of function signatures for a particular utility or feature and ask the LLM to implement the function bodies, one by one, asking for your feedback at each step.
+
 <br>
 
 ## Example of Program Generation with Chat-GPT4
