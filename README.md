@@ -42,7 +42,7 @@ To prevent build progress reports from being printed before your programs run, c
 
 On unix systems, this will be located at
 
-```
+```sh
 ~/.config/dune/config
 ```
 
