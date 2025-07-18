@@ -187,17 +187,9 @@ For video tutorials, I recommend Michael Ryan Clarkson's extensive [OCaml Progra
 
 <br>
 
-## AI Code Generation
-
-Large Language Models (LLMs) are only effective for me because I don't trust their output.
-
-I always test the code that they generate!
-
-However, given that OCaml is an old language that is fairly popular in academia, there is a suprising amount of training data for them to work with.
-
-<br>
-
 ## Function Generation With LLMs
+
+Although I am still wary of using an LLM to create an entire project, they can still useful for small code snippets.
 
 I have had good results with prompts using the following template
 
@@ -205,14 +197,13 @@ I have had good results with prompts using the following template
 Write a [name] function in OCaml that takes
 [name the parameters and their types] and returns
 a [type] such that [describe what the function does].
-Then show me the code.
 ```
 
 Another strategy is to provide the LLM with a list of function signatures for a particular utility or feature and ask the LLM to implement the function bodies, one by one, asking for your feedback at each step.
 
 <br>
 
-## Example of Program Generation with Chat-GPT4
+## Example of Program Generation with Chat-GPT
 
 I wrote a lexer for parsing s-expressions and had the following [lengthy conversation with Chat-GPT](https://chat.openai.com/share/a11e1f50-dce6-4e11-b351-9b4c02d52443) about how to turn the lexer into a parser, then an evaluator and finally a REPL.
 
