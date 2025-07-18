@@ -189,7 +189,7 @@ For video tutorials, I recommend Michael Ryan Clarkson's extensive [OCaml Progra
 
 ## Function Generation With LLMs
 
-Although I am still wary of using an LLM to create an entire project, they can still useful for small code snippets.
+Although I am still wary of using an LLM to create an entire project, they can still be useful for small code snippets.
 
 I have had good results with prompts using the following template
 
