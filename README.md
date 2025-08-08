@@ -203,9 +203,6 @@ Another strategy is to provide the LLM with a list of function signatures for a 
 
 <br>
 
-## Example of Program Generation with Chat-GPT
-
-I wrote a lexer for parsing s-expressions and had the following [lengthy conversation with Chat-GPT](https://chat.openai.com/share/a11e1f50-dce6-4e11-b351-9b4c02d52443) about how to turn the lexer into a parser, then an evaluator and finally a REPL.
 
 Along the way, the LLM made errors, but when I pointed them out, it was able to self-correct and arrive at a solution.
 
