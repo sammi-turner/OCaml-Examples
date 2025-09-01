@@ -202,8 +202,3 @@ a [type] such that [describe what the function does].
 Another strategy is to provide the LLM with a list of function signatures for a particular utility or feature and ask the LLM to implement the function bodies, one by one, asking for your feedback at each step.
 
 <br>
-
-
-Along the way, the LLM made errors, but when I pointed them out, it was able to self-correct and arrive at a solution.
-
-<br>
